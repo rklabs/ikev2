@@ -78,7 +78,10 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
+@IKEV2_DBG_TRUE@am__append_1 = -DIKEV2_DBG -g -pg
+@IKEV2_GCOV_TRUE@am__append_2 = -fprofile-arcs -ftest-coverage
 bin_PROGRAMS = $(am__EXEEXT_1)
+@IKEV2_GCOV_TRUE@am__append_3 = --coverage
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/depcomp
@@ -86,7 +89,10 @@ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/intltool.m4 \
 	$(top_srcdir)/m4/libtool.m4 $(top_srcdir)/m4/ltoptions.m4 \
 	$(top_srcdir)/m4/ltsugar.m4 $(top_srcdir)/m4/ltversion.m4 \
-	$(top_srcdir)/m4/lt~obsolete.m4 $(top_srcdir)/configure.ac
+	$(top_srcdir)/m4/lt~obsolete.m4 \
+	$(top_srcdir)/m4/macros/openssl.m4 \
+	$(top_srcdir)/m4/macros/debug.m4 \
+	$(top_srcdir)/m4/macros/gcov.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -242,6 +248,9 @@ NM = @NM@
 NMEDIT = @NMEDIT@
 OBJDUMP = @OBJDUMP@
 OBJEXT = @OBJEXT@
+OPENSSL_INCLUDES = @OPENSSL_INCLUDES@
+OPENSSL_LDFLAGS = @OPENSSL_LDFLAGS@
+OPENSSL_LIBS = @OPENSSL_LIBS@
 OTOOL = @OTOOL@
 OTOOL64 = @OTOOL64@
 PACKAGE = @PACKAGE@
@@ -252,6 +261,7 @@ PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_URL = @PACKAGE_URL@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
+PKG_CONFIG = @PKG_CONFIG@
 POFILES = @POFILES@
 POSUB = @POSUB@
 PO_IN_DATADIR_FALSE = @PO_IN_DATADIR_FALSE@
@@ -323,13 +333,13 @@ CPPLINT = cpplint
 FINALTARGET = ikev2
 AM_CPPFLAGS = -DPACKAGE_LOCALE_DIR=\""$(localedir)"\" \
 	-DPACKAGE_SRC_DIR=\""$(srcdir)"\" \
-	-DPACKAGE_DATA_DIR=\""$(pkgdatadir)"\" -fprofile-arcs \
-	-ftest-coverage -Wall -Werror -Wno-unused -DIKEV2_DEBUG -pg
+	-DPACKAGE_DATA_DIR=\""$(pkgdatadir)"\" -Wall -Werror \
+	-Wno-unused $(am__append_1) $(am__append_2)
 ikev2_SOURCES = ikev2main.cc ikev2payload.cc ikev2packet.cc sa.cc \
 	ikev2sm.cc logging.cc network.cc crypto.cc job.cc config.cc \
 	timer.cc utils.cc
-ikev2_LDFLAGS = --coverage -lpthread -Wl,--no-as-needed -llog4cpp \
-	-lssl
+ikev2_LDFLAGS = -lpthread -Wl,--no-as-needed -llog4cpp -lssl \
+	$(am__append_3)
 ikev2_LDADD = 
 all: all-am
 

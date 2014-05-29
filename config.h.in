@@ -21,9 +21,6 @@
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
 
-/* Define to 1 if you have the <iostream> header file. */
-#undef HAVE_IOSTREAM
-
 /* Define if your <locale.h> file defines LC_MESSAGES. */
 #undef HAVE_LC_MESSAGES
 
@@ -32,9 +29,6 @@
 
 /* Define to 1 if you have the <memory.h> header file. */
 #undef HAVE_MEMORY_H
-
-/* Define to 1 if you have the <regex> header file. */
-#undef HAVE_REGEX
 
 /* Define to 1 if you have the <stdint.h> header file. */
 #undef HAVE_STDINT_H
@@ -57,8 +51,11 @@
 /* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H
 
-/* Define to 1 if you have the <vector> header file. */
-#undef HAVE_VECTOR
+/* Define to 1 or higher if this is a debug build */
+#undef IKEV2_DBG
+
+/* Define to 1 or higher if this is a debug build */
+#undef IKEV2_GCOV
 
 /* Define to the sub-directory in which libtool stores uninstalled libraries.
    */

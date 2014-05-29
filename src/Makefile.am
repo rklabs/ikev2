@@ -7,10 +7,16 @@ FINALTARGET = ikev2
 AM_CPPFLAGS = -DPACKAGE_LOCALE_DIR=\""$(localedir)"\"
 AM_CPPFLAGS += -DPACKAGE_SRC_DIR=\""$(srcdir)"\"
 AM_CPPFLAGS += -DPACKAGE_DATA_DIR=\""$(pkgdatadir)"\"
-AM_CPPFLAGS += -fprofile-arcs -ftest-coverage
 AM_CPPFLAGS += -Wall -Werror -Wno-unused
-AM_CPPFLAGS += -DIKEV2_DEBUG
-AM_CPPFLAGS += -pg
+
+if IKEV2_DBG
+    AM_CPPFLAGS += -DIKEV2_DBG
+    AM_CPPFLAGS += -g -pg
+endif
+
+if IKEV2_GCOV
+    AM_CPPFLAGS += -fprofile-arcs -ftest-coverage
+endif
 
 bin_PROGRAMS = $(FINALTARGET)
 
@@ -28,10 +34,13 @@ ikev2_SOURCES += config.cc
 ikev2_SOURCES += timer.cc
 ikev2_SOURCES += utils.cc
 
-ikev2_LDFLAGS = --coverage
-ikev2_LDFLAGS += -lpthread -Wl,--no-as-needed
+ikev2_LDFLAGS = -lpthread -Wl,--no-as-needed
 ikev2_LDFLAGS += -llog4cpp
 ikev2_LDFLAGS += -lssl
+
+if IKEV2_GCOV
+    ikev2_LDFLAGS += --coverage
+endif
 
 ikev2_LDADD =
 

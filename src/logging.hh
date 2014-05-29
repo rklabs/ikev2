@@ -31,7 +31,7 @@
 #include <log4cpp/Priority.hh>
 #include <log4cpp/RollingFileAppender.hh>
 
-#ifdef IKEV2_DEBUG
+#ifdef IKEV2_DBG
     #define TRACEF(level, msg)                  \
             FILE *fp = fopen("logfile" , "a+"); \
             fprintf(fp, "%s : %s:%s : "         \

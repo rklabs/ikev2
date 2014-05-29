@@ -19,7 +19,7 @@
 #ifndef _SRC_IKEV2_CRYPTO_H_
 #define _SRC_IKEV2_CRYPTO_H_
 
-#include <openss/evp.h>
+#include <openssl/evp.h>
 
 #include "src/logging.hh"
 

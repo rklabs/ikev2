@@ -5,11 +5,21 @@ AC_INIT(ikev2, 1.0)
 
 AC_CONFIG_HEADERS([config.h])
 
-AM_INIT_AUTOMAKE([subdir-objects -Wall -Werror dist-bzip2])
+AM_INIT_AUTOMAKE([subdir-objects])
+
 AC_CONFIG_MACRO_DIR([m4])
+
+dnl Custom macro to check openssl libraries and headers
+m4_include(m4/macros/openssl.m4)
+AX_CHECK_OPENSSL()
 
 dnl ********** rkadam enable verbose make ******************************
 AM_SILENT_RULES([no])
+
+dnl Required since -g -O2 flags are always set by default
+if test -z $CXXFLAGS; then
+    CXXFLAGS='-O2'
+fi
 
 AC_PROG_CXX
 
@@ -23,17 +33,17 @@ AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [GETTEXT package name])
 AM_GLIB_GNU_GETTEXT
 
-dnl ************ rkadam Adding this for C++11 support ********************
+dnl ************ rkadam Adding C++11 support ********************
 AC_SUBST([AM_CXXFLAGS], ["-std=c++11"])
 
-AC_CHECK_HEADERS(iostream)
-AC_CHECK_HEADERS(vector)
-AC_CHECK_HEADERS(regex)
-
+dnl ********************** libtool support *************************
 LT_INIT
 
+m4_include(m4/macros/debug.m4)
+m4_include(m4/macros/gcov.m4)
+
 AC_OUTPUT([
-Makefile
-src/Makefile
-po/Makefile.in
+    Makefile
+    src/Makefile
+    po/Makefile.in
 ])
