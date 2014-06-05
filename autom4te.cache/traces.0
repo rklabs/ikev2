@@ -2386,7 +2386,7 @@ m4_if($#, 0, [LT_LIB_M], [LT_LIB_M($@)])])
 m4trace:m4/libtool.m4:7637: -1- AC_DEFUN([LT_PROG_GCJ], [m4_ifdef([AC_PROG_GCJ], [AC_PROG_GCJ],
   [m4_ifdef([A][M_PROG_GCJ], [A][M_PROG_GCJ],
     [AC_CHECK_TOOL(GCJ, gcj,)
-      test "x${GCJFLAGS+set}" = xset || GCJFLAGS=""
+      test "x${GCJFLAGS+set}" = xset || GCJFLAGS="-g -O2"
       AC_SUBST(GCJFLAGS)])])[]dnl
 ])
 m4trace:m4/libtool.m4:7646: -1- AU_DEFUN([LT_AC_PROG_GCJ], [m4_if($#, 0, [LT_PROG_GCJ], [LT_PROG_GCJ($@)])])

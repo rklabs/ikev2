@@ -1,168 +1,73 @@
-2014-05-27 19:06:17 [INFO] : network.cc : ikev2::network::udpSocket::udpSocket() : 25
-2014-05-27 19:06:17 [INFO] : Using IPv4: 0.0.0.0
-2014-05-27 19:06:17 [INFO] : config.cc : ikev2::config::configurator::configurator() : 24
-2014-05-27 19:06:17 [INFO] : job.cc : ikev2::job::job() : 23
-2014-05-27 19:06:17 [INFO] : crypto.cc : ikev2::crypto::cipher::cipher() : 24
-2014-05-27 19:06:17 [INFO] : utils.cc : int setRLimit() : 22
-2014-05-27 19:06:17 [INFO] : ulimit -c unlimited success!
-2014-05-27 19:06:17 [INFO] : myException
-2014-05-27 19:06:17 [INFO] : crypto.cc : ikev2::crypto::cipher::~cipher() : 28
-2014-05-27 19:06:17 [INFO] : job.cc : ikev2::job::~job() : 27
-2014-05-27 19:06:17 [INFO] : config.cc : ikev2::config::configurator::~configurator() : 28
-2014-05-27 19:06:17 [INFO] : network.cc : ikev2::network::udpSocket::~udpSocket() : 79
-2014-05-28 12:39:11 [INFO] : network.cc : ikev2::network::udpSocket::udpSocket() : 25
-2014-05-28 12:39:11 [INFO] : Using IPv4: 0.0.0.0
-2014-05-28 12:39:11 [INFO] : config.cc : ikev2::config::configurator::configurator() : 24
-2014-05-28 12:39:11 [INFO] : job.cc : ikev2::job::job() : 23
-2014-05-28 12:39:11 [INFO] : crypto.cc : ikev2::crypto::cipher::cipher() : 24
-2014-05-28 12:39:11 [INFO] : utils.cc : int setRLimit() : 22
-2014-05-28 12:39:11 [INFO] : ulimit -c unlimited success!
-2014-05-28 12:39:12 [INFO] : myException
-2014-05-28 12:39:12 [INFO] : crypto.cc : ikev2::crypto::cipher::~cipher() : 28
-2014-05-28 12:39:12 [INFO] : job.cc : ikev2::job::~job() : 27
-2014-05-28 12:39:12 [INFO] : config.cc : ikev2::config::configurator::~configurator() : 28
-2014-05-28 12:39:12 [INFO] : network.cc : ikev2::network::udpSocket::~udpSocket() : 79
-2014-05-28 13:01:12 [INFO] : network.cc : ikev2::network::udpSocket::udpSocket() : 25
-2014-05-28 13:01:12 [INFO] : Using IPv4: 0.0.0.0
-2014-05-28 13:01:12 [INFO] : config.cc : ikev2::config::configurator::configurator() : 24
-2014-05-28 13:01:12 [INFO] : job.cc : ikev2::job::job() : 23
-2014-05-28 13:01:12 [INFO] : crypto.cc : ikev2::crypto::cipher::cipher() : 24
-2014-05-28 13:01:12 [INFO] : crypto.cc : ikev2::crypto::hash::hash() : 32
-2014-05-28 13:01:12 [INFO] : crypto.cc : ikev2::crypto::dh::dh() : 40
-2014-05-28 13:01:12 [INFO] : crypto.cc : ikev2::crypto::cryptoPlugin::cryptoPlugin() : 48
-2014-05-28 13:01:12 [INFO] : crypto.cc : ikev2::crypto::opensslPlugin::opensslPlugin() : 56
-2014-05-28 13:01:12 [INFO] : utils.cc : int setRLimit() : 22
-2014-05-28 13:01:12 [INFO] : ulimit -c unlimited success!
-2014-05-28 13:01:12 [INFO] : myException
-2014-05-28 13:01:12 [INFO] : crypto.cc : virtual ikev2::crypto::opensslPlugin::~opensslPlugin() : 60
-2014-05-28 13:01:12 [INFO] : crypto.cc : virtual ikev2::crypto::cryptoPlugin::~cryptoPlugin() : 52
-2014-05-28 13:01:12 [INFO] : crypto.cc : ikev2::crypto::dh::~dh() : 44
-2014-05-28 13:01:12 [INFO] : crypto.cc : ikev2::crypto::hash::~hash() : 36
-2014-05-28 13:01:12 [INFO] : crypto.cc : ikev2::crypto::cipher::~cipher() : 28
-2014-05-28 13:01:12 [INFO] : job.cc : ikev2::job::~job() : 27
-2014-05-28 13:01:12 [INFO] : config.cc : ikev2::config::configurator::~configurator() : 28
-2014-05-28 13:01:12 [INFO] : network.cc : ikev2::network::udpSocket::~udpSocket() : 79
-2014-05-28 13:01:52 [INFO] : network.cc : ikev2::network::udpSocket::udpSocket() : 25
-2014-05-28 13:01:52 [INFO] : Using IPv4: 0.0.0.0
-2014-05-28 13:01:52 [INFO] : config.cc : ikev2::config::configurator::configurator() : 24
-2014-05-28 13:01:52 [INFO] : job.cc : ikev2::job::job() : 23
-2014-05-28 13:01:52 [INFO] : crypto.cc : ikev2::crypto::cipher::cipher() : 24
-2014-05-28 13:01:52 [INFO] : crypto.cc : ikev2::crypto::hash::hash() : 32
-2014-05-28 13:01:52 [INFO] : crypto.cc : ikev2::crypto::dh::dh() : 40
-2014-05-28 13:01:52 [INFO] : crypto.cc : ikev2::crypto::cryptoPlugin::cryptoPlugin() : 48
-2014-05-28 13:01:52 [INFO] : crypto.cc : ikev2::crypto::opensslPlugin::opensslPlugin() : 56
-2014-05-28 13:01:52 [INFO] : utils.cc : int setRLimit() : 22
-2014-05-28 13:01:52 [INFO] : ulimit -c unlimited success!
-2014-05-28 13:01:52 [INFO] : myException
-2014-05-28 13:01:52 [INFO] : crypto.cc : virtual ikev2::crypto::opensslPlugin::~opensslPlugin() : 60
-2014-05-28 13:01:52 [INFO] : crypto.cc : virtual ikev2::crypto::cryptoPlugin::~cryptoPlugin() : 52
-2014-05-28 13:01:52 [INFO] : crypto.cc : ikev2::crypto::dh::~dh() : 44
-2014-05-28 13:01:52 [INFO] : crypto.cc : ikev2::crypto::hash::~hash() : 36
-2014-05-28 13:01:52 [INFO] : crypto.cc : ikev2::crypto::cipher::~cipher() : 28
-2014-05-28 13:01:52 [INFO] : job.cc : ikev2::job::~job() : 27
-2014-05-28 13:01:52 [INFO] : config.cc : ikev2::config::configurator::~configurator() : 28
-2014-05-28 13:01:52 [INFO] : network.cc : ikev2::network::udpSocket::~udpSocket() : 79
-2014-05-28 14:21:21 [INFO] : network.cc : ikev2::network::udpSocket::udpSocket() : 25
-2014-05-28 14:21:21 [INFO] : Using IPv4: 0.0.0.0
-2014-05-28 14:21:21 [INFO] : config.cc : ikev2::config::configurator::configurator() : 24
-2014-05-28 14:21:21 [INFO] : job.cc : ikev2::job::job() : 23
-2014-05-28 14:21:21 [INFO] : crypto.cc : ikev2::crypto::cipher::cipher() : 24
-2014-05-28 14:21:21 [INFO] : crypto.cc : ikev2::crypto::hash::hash() : 32
-2014-05-28 14:21:21 [INFO] : crypto.cc : ikev2::crypto::dh::dh() : 40
-2014-05-28 14:21:21 [INFO] : crypto.cc : ikev2::crypto::cryptoPlugin::cryptoPlugin() : 48
-2014-05-28 14:21:21 [INFO] : crypto.cc : ikev2::crypto::opensslPlugin::opensslPlugin() : 56
-2014-05-28 14:21:21 [INFO] : utils.cc : int setRLimit() : 22
-2014-05-28 14:21:21 [INFO] : ulimit -c unlimited success!
-2014-05-28 14:21:21 [INFO] : myException
-2014-05-28 14:21:21 [INFO] : crypto.cc : virtual ikev2::crypto::opensslPlugin::~opensslPlugin() : 60
-2014-05-28 14:21:21 [INFO] : crypto.cc : virtual ikev2::crypto::cryptoPlugin::~cryptoPlugin() : 52
-2014-05-28 14:21:21 [INFO] : crypto.cc : ikev2::crypto::dh::~dh() : 44
-2014-05-28 14:21:21 [INFO] : crypto.cc : ikev2::crypto::hash::~hash() : 36
-2014-05-28 14:21:21 [INFO] : crypto.cc : ikev2::crypto::cipher::~cipher() : 28
-2014-05-28 14:21:21 [INFO] : job.cc : ikev2::job::~job() : 27
-2014-05-28 14:21:21 [INFO] : config.cc : ikev2::config::configurator::~configurator() : 28
-2014-05-28 14:21:21 [INFO] : network.cc : ikev2::network::udpSocket::~udpSocket() : 79
-2014-05-28 14:21:28 [INFO] : network.cc : ikev2::network::udpSocket::udpSocket() : 25
-2014-05-28 14:21:28 [INFO] : Using IPv4: 0.0.0.0
-2014-05-28 14:21:28 [INFO] : config.cc : ikev2::config::configurator::configurator() : 24
-2014-05-28 14:21:28 [INFO] : job.cc : ikev2::job::job() : 23
-2014-05-28 14:21:28 [INFO] : crypto.cc : ikev2::crypto::cipher::cipher() : 24
-2014-05-28 14:21:28 [INFO] : crypto.cc : ikev2::crypto::hash::hash() : 32
-2014-05-28 14:21:28 [INFO] : crypto.cc : ikev2::crypto::dh::dh() : 40
-2014-05-28 14:21:28 [INFO] : crypto.cc : ikev2::crypto::cryptoPlugin::cryptoPlugin() : 48
-2014-05-28 14:21:28 [INFO] : crypto.cc : ikev2::crypto::opensslPlugin::opensslPlugin() : 56
-2014-05-28 14:21:28 [INFO] : utils.cc : int setRLimit() : 22
-2014-05-28 14:21:28 [INFO] : ulimit -c unlimited success!
-2014-05-28 14:21:28 [INFO] : myException
-2014-05-28 14:21:28 [INFO] : crypto.cc : virtual ikev2::crypto::opensslPlugin::~opensslPlugin() : 60
-2014-05-28 14:21:28 [INFO] : crypto.cc : virtual ikev2::crypto::cryptoPlugin::~cryptoPlugin() : 52
-2014-05-28 14:21:28 [INFO] : crypto.cc : ikev2::crypto::dh::~dh() : 44
-2014-05-28 14:21:28 [INFO] : crypto.cc : ikev2::crypto::hash::~hash() : 36
-2014-05-28 14:21:28 [INFO] : crypto.cc : ikev2::crypto::cipher::~cipher() : 28
-2014-05-28 14:21:28 [INFO] : job.cc : ikev2::job::~job() : 27
-2014-05-28 14:21:28 [INFO] : config.cc : ikev2::config::configurator::~configurator() : 28
-2014-05-28 14:21:28 [INFO] : network.cc : ikev2::network::udpSocket::~udpSocket() : 79
-2014-05-28 14:21:40 [INFO] : network.cc : ikev2::network::udpSocket::udpSocket() : 25
-2014-05-28 14:21:40 [INFO] : Using IPv4: 0.0.0.0
-2014-05-28 14:21:40 [INFO] : config.cc : ikev2::config::configurator::configurator() : 24
-2014-05-28 14:21:40 [INFO] : job.cc : ikev2::job::job() : 23
-2014-05-28 14:21:40 [INFO] : crypto.cc : ikev2::crypto::cipher::cipher() : 24
-2014-05-28 14:21:40 [INFO] : crypto.cc : ikev2::crypto::hash::hash() : 32
-2014-05-28 14:21:40 [INFO] : crypto.cc : ikev2::crypto::dh::dh() : 40
-2014-05-28 14:21:40 [INFO] : crypto.cc : ikev2::crypto::cryptoPlugin::cryptoPlugin() : 48
-2014-05-28 14:21:40 [INFO] : crypto.cc : ikev2::crypto::opensslPlugin::opensslPlugin() : 56
-2014-05-28 14:21:40 [INFO] : utils.cc : int setRLimit() : 22
-2014-05-28 14:21:40 [INFO] : ulimit -c unlimited success!
-2014-05-28 14:21:40 [INFO] : myException
-2014-05-28 14:21:40 [INFO] : crypto.cc : virtual ikev2::crypto::opensslPlugin::~opensslPlugin() : 60
-2014-05-28 14:21:40 [INFO] : crypto.cc : virtual ikev2::crypto::cryptoPlugin::~cryptoPlugin() : 52
-2014-05-28 14:21:40 [INFO] : crypto.cc : ikev2::crypto::dh::~dh() : 44
-2014-05-28 14:21:40 [INFO] : crypto.cc : ikev2::crypto::hash::~hash() : 36
-2014-05-28 14:21:40 [INFO] : crypto.cc : ikev2::crypto::cipher::~cipher() : 28
-2014-05-28 14:21:40 [INFO] : job.cc : ikev2::job::~job() : 27
-2014-05-28 14:21:40 [INFO] : config.cc : ikev2::config::configurator::~configurator() : 28
-2014-05-28 14:21:40 [INFO] : network.cc : ikev2::network::udpSocket::~udpSocket() : 79
-2014-05-28 16:31:05 [INFO] : network.cc : ikev2::network::udpSocket::udpSocket() : 25
-2014-05-28 16:31:05 [INFO] : Using IPv4: 0.0.0.0
-2014-05-28 16:31:05 [INFO] : config.cc : ikev2::config::config() : 23
-2014-05-28 16:31:05 [INFO] : job.cc : ikev2::job::job() : 23
-2014-05-28 16:31:05 [INFO] : crypto.cc : ikev2::crypto::cipher::cipher() : 24
-2014-05-28 16:31:05 [INFO] : crypto.cc : ikev2::crypto::hash::hash() : 32
-2014-05-28 16:31:05 [INFO] : crypto.cc : ikev2::crypto::dh::dh() : 40
-2014-05-28 16:31:05 [INFO] : crypto.cc : ikev2::crypto::cryptoPluginInterface::cryptoPluginInterface() : 48
-2014-05-28 16:31:05 [INFO] : crypto.cc : ikev2::crypto::opensslPlugin::opensslPlugin() : 56
-2014-05-28 16:31:05 [INFO] : utils.cc : int setResourceLimit() : 22
-2014-05-28 16:31:05 [INFO] : ulimit -c unlimited success!
-2014-05-28 16:31:05 [INFO] : myException
-2014-05-28 16:31:05 [INFO] : crypto.cc : virtual ikev2::crypto::opensslPlugin::~opensslPlugin() : 60
-2014-05-28 16:31:05 [INFO] : crypto.cc : virtual ikev2::crypto::cryptoPluginInterface::~cryptoPluginInterface() : 52
-2014-05-28 16:31:05 [INFO] : crypto.cc : ikev2::crypto::dh::~dh() : 44
-2014-05-28 16:31:05 [INFO] : crypto.cc : ikev2::crypto::hash::~hash() : 36
-2014-05-28 16:31:05 [INFO] : crypto.cc : ikev2::crypto::cipher::~cipher() : 28
-2014-05-28 16:31:05 [INFO] : job.cc : ikev2::job::~job() : 27
-2014-05-28 16:31:05 [INFO] : config.cc : ikev2::config::~config() : 27
-2014-05-28 16:31:05 [INFO] : network.cc : ikev2::network::udpSocket::~udpSocket() : 79
-2014-05-29 15:13:48 [INFO] : network.cc : ikev2::network::udpSocket::udpSocket() : 25
-2014-05-29 15:13:48 [INFO] : Using IPv4: 0.0.0.0
-2014-05-29 15:13:48 [INFO] : config.cc : ikev2::config::config() : 23
-2014-05-29 15:13:48 [INFO] : job.cc : ikev2::job::job() : 23
-2014-05-29 15:13:48 [INFO] : crypto.cc : ikev2::crypto::cipher::cipher() : 24
-2014-05-29 15:13:48 [INFO] : crypto.cc : ikev2::crypto::hash::hash() : 32
-2014-05-29 15:13:48 [INFO] : crypto.cc : ikev2::crypto::dh::dh() : 40
-2014-05-29 15:13:48 [INFO] : crypto.cc : ikev2::crypto::cryptoPluginInterface::cryptoPluginInterface() : 48
-2014-05-29 15:13:48 [INFO] : crypto.cc : ikev2::crypto::opensslPlugin::opensslPlugin() : 56
-2014-05-29 15:13:48 [INFO] : utils.cc : int setResourceLimit() : 22
-2014-05-29 15:13:48 [INFO] : ulimit -c unlimited success!
-2014-05-29 15:13:48 [INFO] : myException
-2014-05-29 15:13:48 [INFO] : crypto.cc : virtual ikev2::crypto::opensslPlugin::~opensslPlugin() : 60
-2014-05-29 15:13:48 [INFO] : crypto.cc : virtual ikev2::crypto::cryptoPluginInterface::~cryptoPluginInterface() : 52
-2014-05-29 15:13:48 [INFO] : crypto.cc : ikev2::crypto::dh::~dh() : 44
-2014-05-29 15:13:48 [INFO] : crypto.cc : ikev2::crypto::hash::~hash() : 36
-2014-05-29 15:13:48 [INFO] : crypto.cc : ikev2::crypto::cipher::~cipher() : 28
-2014-05-29 15:13:48 [INFO] : job.cc : ikev2::job::~job() : 27
-2014-05-29 15:13:48 [INFO] : config.cc : ikev2::config::~config() : 27
-2014-05-29 15:13:48 [INFO] : network.cc : ikev2::network::udpSocket::~udpSocket() : 79
-2014-05-29 16:12:55 [INFO] : network.cc : ikev2::network::udpSocket::udpSocket() : 25
-2014-05-29 16:12:55 [INFO] : Using IPv4: 0.0.0.0
-2014-05-29 16:12:55 [INFO] : myException
-2014-05-29 16:12:55 [INFO] : network.cc : ikev2::network::udpSocket::~udpSocket() : 79
+2014-05-30 17:49:54 [INFO] : network.cc : ikev2::network::udpSocket::udpSocket() : 25
+2014-05-30 17:49:54 [INFO] : Using IPv4: 0.0.0.0
+2014-05-30 17:49:54 [INFO] : config.cc : ikev2::config::config() : 23
+2014-05-30 17:49:54 [INFO] : job.cc : ikev2::job::job() : 23
+2014-05-30 17:49:54 [INFO] : crypto.cc : ikev2::crypto::cryptoPluginInterface::cryptoPluginInterface() : 48
+2014-05-30 17:49:54 [INFO] : crypto.cc : ikev2::crypto::opensslPlugin::opensslPlugin() : 56
+2014-05-30 17:49:54 [INFO] : utils.cc : int setResourceLimit() : 22
+2014-05-30 17:49:54 [INFO] : ulimit -c unlimited success!
+2014-05-30 17:49:54 [INFO] : myException
+2014-05-30 17:49:54 [INFO] : crypto.cc : virtual ikev2::crypto::opensslPlugin::~opensslPlugin() : 60
+2014-05-30 17:49:54 [INFO] : crypto.cc : virtual ikev2::crypto::cryptoPluginInterface::~cryptoPluginInterface() : 52
+2014-05-30 17:49:54 [INFO] : job.cc : ikev2::job::~job() : 27
+2014-05-30 17:49:54 [INFO] : config.cc : ikev2::config::~config() : 27
+2014-05-30 17:49:54 [INFO] : network.cc : ikev2::network::udpSocket::~udpSocket() : 79
+2014-05-30 18:25:30 [INFO] : network.cc : ikev2::network::udpSocket::udpSocket() : 25
+2014-05-30 18:25:30 [INFO] : Using IPv4: 0.0.0.0
+2014-05-30 18:25:30 [INFO] : config.cc : ikev2::config::config() : 23
+2014-05-30 18:25:30 [INFO] : job.cc : ikev2::job::job() : 23
+2014-05-30 18:25:30 [INFO] : crypto.cc : ikev2::crypto::cryptoPluginInterface::cryptoPluginInterface() : 48
+2014-05-30 18:25:30 [INFO] : crypto.cc : ikev2::crypto::opensslPlugin::opensslPlugin() : 56
+2014-05-30 18:25:30 [INFO] : utils.cc : int setResourceLimit() : 22
+2014-05-30 18:25:30 [INFO] : ulimit -c unlimited success!
+2014-05-30 18:25:30 [INFO] : job.cc : ikev2::job::~job() : 27
+2014-05-30 18:25:30 [INFO] : config.cc : ikev2::config::~config() : 27
+2014-05-30 18:25:30 [INFO] : network.cc : ikev2::network::udpSocket::~udpSocket() : 79
+2014-05-30 18:25:43 [INFO] : network.cc : ikev2::network::udpSocket::udpSocket() : 25
+2014-05-30 18:25:43 [INFO] : Using IPv4: 0.0.0.0
+2014-05-30 18:25:43 [INFO] : config.cc : ikev2::config::config() : 23
+2014-05-30 18:25:43 [INFO] : job.cc : ikev2::job::job() : 23
+2014-05-30 18:25:43 [INFO] : crypto.cc : ikev2::crypto::cryptoPluginInterface::cryptoPluginInterface() : 48
+2014-05-30 18:25:43 [INFO] : crypto.cc : ikev2::crypto::opensslPlugin::opensslPlugin() : 56
+2014-05-30 18:25:43 [INFO] : utils.cc : int setResourceLimit() : 22
+2014-05-30 18:25:43 [INFO] : ulimit -c unlimited success!
+2014-05-30 18:25:43 [INFO] : job.cc : ikev2::job::~job() : 27
+2014-05-30 18:25:43 [INFO] : config.cc : ikev2::config::~config() : 27
+2014-05-30 18:25:43 [INFO] : network.cc : ikev2::network::udpSocket::~udpSocket() : 79
+2014-05-30 18:26:00 [INFO] : network.cc : ikev2::network::udpSocket::udpSocket() : 25
+2014-05-30 18:26:00 [INFO] : Using IPv4: 0.0.0.0
+2014-05-30 18:26:00 [INFO] : config.cc : ikev2::config::config() : 23
+2014-05-30 18:26:00 [INFO] : job.cc : ikev2::job::job() : 23
+2014-05-30 18:26:00 [INFO] : crypto.cc : ikev2::crypto::cryptoPluginInterface::cryptoPluginInterface() : 48
+2014-05-30 18:26:00 [INFO] : crypto.cc : ikev2::crypto::opensslPlugin::opensslPlugin() : 56
+2014-05-30 18:26:00 [INFO] : utils.cc : int setResourceLimit() : 22
+2014-05-30 18:26:00 [INFO] : ulimit -c unlimited success!
+2014-05-30 18:26:00 [INFO] : job.cc : ikev2::job::~job() : 27
+2014-05-30 18:26:00 [INFO] : config.cc : ikev2::config::~config() : 27
+2014-05-30 18:26:00 [INFO] : network.cc : ikev2::network::udpSocket::~udpSocket() : 79
+2014-05-30 18:26:04 [INFO] : network.cc : ikev2::network::udpSocket::udpSocket() : 25
+2014-05-30 18:26:04 [INFO] : Using IPv4: 0.0.0.0
+2014-05-30 18:26:04 [INFO] : config.cc : ikev2::config::config() : 23
+2014-05-30 18:26:04 [INFO] : job.cc : ikev2::job::job() : 23
+2014-05-30 18:26:04 [INFO] : crypto.cc : ikev2::crypto::cryptoPluginInterface::cryptoPluginInterface() : 48
+2014-05-30 18:26:04 [INFO] : crypto.cc : ikev2::crypto::opensslPlugin::opensslPlugin() : 56
+2014-05-30 18:26:04 [INFO] : utils.cc : int setResourceLimit() : 22
+2014-05-30 18:26:04 [INFO] : ulimit -c unlimited success!
+2014-05-30 18:26:04 [INFO] : crypto.cc : virtual ikev2::crypto::opensslPlugin::~opensslPlugin() : 60
+2014-05-30 18:26:04 [INFO] : crypto.cc : virtual ikev2::crypto::cryptoPluginInterface::~cryptoPluginInterface() : 52
+2014-05-30 18:26:04 [INFO] : job.cc : ikev2::job::~job() : 27
+2014-05-30 18:26:04 [INFO] : config.cc : ikev2::config::~config() : 27
+2014-05-30 18:26:04 [INFO] : network.cc : ikev2::network::udpSocket::~udpSocket() : 79
+2014-05-30 18:26:09 [INFO] : network.cc : ikev2::network::udpSocket::udpSocket() : 25
+2014-05-30 18:26:09 [INFO] : Using IPv4: 0.0.0.0
+2014-05-30 18:26:09 [INFO] : config.cc : ikev2::config::config() : 23
+2014-05-30 18:26:09 [INFO] : job.cc : ikev2::job::job() : 23
+2014-05-30 18:26:09 [INFO] : crypto.cc : ikev2::crypto::cryptoPluginInterface::cryptoPluginInterface() : 48
+2014-05-30 18:26:09 [INFO] : crypto.cc : ikev2::crypto::opensslPlugin::opensslPlugin() : 56
+2014-05-30 18:26:09 [INFO] : utils.cc : int setResourceLimit() : 22
+2014-05-30 18:26:09 [INFO] : ulimit -c unlimited success!
+2014-05-30 18:26:09 [INFO] : crypto.cc : virtual ikev2::crypto::opensslPlugin::~opensslPlugin() : 60
+2014-05-30 18:26:09 [INFO] : crypto.cc : virtual ikev2::crypto::cryptoPluginInterface::~cryptoPluginInterface() : 52
+2014-05-30 18:26:09 [INFO] : job.cc : ikev2::job::~job() : 27
+2014-05-30 18:26:09 [INFO] : config.cc : ikev2::config::~config() : 27
+2014-05-30 18:26:09 [INFO] : network.cc : ikev2::network::udpSocket::~udpSocket() : 79

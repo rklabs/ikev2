@@ -20,6 +20,9 @@
 #define _SRC_IKEV2_CRYPTO_H_
 
 #include <openssl/evp.h>
+#include <iostream>
+#include <vector>
+#include <map>
 
 #include "src/logging.hh"
 
@@ -47,7 +50,12 @@ namespace crypto {
         };
         hash();
         ~hash();
-        int hmac();
+    };
+
+    class hmac {
+     public:
+        hmac();
+        ~hmac();
     };
 
     class dh {
@@ -64,11 +72,15 @@ namespace crypto {
         int generateParams();
     };
 
+    // This class is abstract base class for cryto library.
+    // It provides common objects(encryption, hash, dh, pki)
+    // and methods present in any crypto library
     class cryptoPluginInterface {
      protected:
-        cipher cipherObj;
-        hash hashObj;
-        dh dhObj;
+        std::map<int, cipher> ciphers;
+        std::map<int, hash> hashAlgs;
+        std::map<int, hmac> hmacAlgs;
+        std::map<int, dh> diffieHellmanGrps;
      public:
          virtual void init()=0;
          cryptoPluginInterface();

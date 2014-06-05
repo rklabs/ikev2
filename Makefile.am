@@ -13,7 +13,6 @@ dist_doc_DATA = \
 	INSTALL \
 	NEWS
 
-
 INTLTOOL_FILES = intltool-extract.in \
 	intltool-merge.in \
 	intltool-update.in

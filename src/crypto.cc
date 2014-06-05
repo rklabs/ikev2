@@ -35,6 +35,14 @@ namespace crypto {
     hash::~hash() {
         TRACE();
     }
+    
+    hmac::hmac() {
+        TRACE();
+    }
+
+    hmac::~hmac() {
+        TRACE();
+    }
 
     dh::dh() {
         TRACE();

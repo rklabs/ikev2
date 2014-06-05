@@ -36,13 +36,6 @@ int main() {
     // Make sure core is dumped if any program error occurs
     setResourceLimit();
 
-    try {
-        throw myException();
-    }
-    catch (myException &e) {
-        LOG(LOG::INFO, "%s", e.what());
-    }
-
     delete cryptoPlugin;
 
     return 0;
