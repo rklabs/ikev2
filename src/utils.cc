@@ -1,4 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
  * Copyright (C) 2014 Raju Kadam <rajulkadam@gmail.com>
  *
@@ -16,19 +15,46 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "src/utils.hh"
+#include "utils.hh"
+
+namespace Utils {
 
 int setResourceLimit() {
     TRACE();
-    // core dumps may be disallowed by parent of this process; change that
+    // core dumps may be disallowed by parent of this process
     struct rlimit core_limits;
     core_limits.rlim_cur = core_limits.rlim_max = RLIM_INFINITY;
     if (setrlimit(RLIMIT_CORE, &core_limits) == -1) {
-        LOG(LOG::ERROR, "setrlimit: %s", strerror(errno));
+        LOG(ERROR, "setrlimit: %s", strerror(errno));
+        perror("setrlimit");
         return -1;
     }
 
-    LOG(LOG::INFO, "ulimit -c unlimited success!");
+    LOG(INFO, "ulimit -c unlimited success!");
 
     return 0;
+}
+
+int
+setFdNonBlocking(int fd) {
+    int flags, ret;
+
+    // Save flags
+    flags = fcntl(fd, F_GETFL, 0);
+    if (flags == -1) {
+        perror ("fcntl");
+        return -1;
+    }
+
+    // Make descriptor non-blocking
+    flags |= O_NONBLOCK;
+    ret = fcntl(fd, F_SETFL, flags);
+    if (ret == -1) {
+        perror ("fcntl");
+        return -1;
+    }
+
+    return 0;
+}
+
 }

@@ -1,4 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
  * Copyright (C) 2014 Raju Kadam <rajulkadam@gmail.com>
  *
@@ -15,20 +14,18 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef _SRC_IKEV2PAYLOAD_H_
-#define _SRC_IKEV2PAYLOAD_H_
+
+#pragma once
 
 #include <string>
-#include "src/logging.hh"
+#include "logging.hh"
 
-namespace ikev2 {
-namespace payload {
-        typedef struct encoder_s {
-            int type;
-            std::string description;
-        }encoder;
+namespace IKEv2 {
+namespace Payload {
+typedef struct encoder_s {
+    int type;
+    std::string description;
+}encoder;
 
 }  // namespace payload
 }  // namespace ikev2
-
-#endif  // _SRC_IKEV2PAYLOAD_H_

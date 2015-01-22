@@ -1,4 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
  * Copyright (C) 2014 Raju Kadam <rajulkadam@gmail.com>
  *
@@ -16,26 +15,26 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "src/sa.hh"
+#include "sa.hh"
 
-namespace ikev2 {
-namespace sa {
+namespace IKEv2 {
+namespace SA {
 
-    ikev2sa::ikev2sa() {
-        TRACE();
-    }
+ikev2sa::ikev2sa() {
+    TRACE();
+}
 
-    ikev2sa::~ikev2sa() {
-        TRACE();
-    }
+ikev2sa::~ikev2sa() {
+    TRACE();
+}
 
-    ipsecsa::ipsecsa() {
-        TRACE();
-    }
+ipsecsa::ipsecsa() {
+    TRACE();
+}
 
-    ipsecsa::~ipsecsa() {
-        TRACE();
-    }
+ipsecsa::~ipsecsa() {
+    TRACE();
+}
 
-}  // namespace sa
-}  // namespace ikev2
+}  // namespace SA
+}  // namespace IKEv2

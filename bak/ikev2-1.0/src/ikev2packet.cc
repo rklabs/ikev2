@@ -15,19 +15,33 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include "ikev2packet.hh"
 
-#include "src/job.hh"
+namespace IKEv2 {
+Packet::Packet() {
+    TRACE();
+}
 
-namespace ikev2 {
-    job::job() {
-        TRACE();
-    }
+Packet::~Packet() {
+    TRACE();
+}
 
-    job::~job() {
-        TRACE();
-    }
+int Packet::create() {
+    TRACE();
 
-    int job::enqueue() {
-        return 0;
-    }
-}  // namespace ikev2
+    return 0;
+}
+
+int Packet::destroy() {
+    TRACE();
+
+    return 0;
+}
+
+int Packet::clone() {
+    TRACE();
+
+    return 0;
+}
+}  // namespace IKEv2
+

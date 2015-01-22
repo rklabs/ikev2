@@ -1,4 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
  * Copyright (C) 2014 Raju Kadam <rajulkadam@gmail.com>
  *
@@ -16,8 +15,7 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _IKEV2_SRC_LOGGING_H_
-#define _IKEV2_SRC_LOGGING_H_
+#pragma once
 
 #include <syslog.h>
 #include <stdio.h>
@@ -41,9 +39,9 @@
                         __TIME__,               \
                         __PRETTY_FUNCTION__,    \
                         __LINE__, level, msg);  \
-            fclose(fp); \
+            fclose(fp);                         \
 
-    #define TRACEO(level, msg)                      \
+    #define TRACE0(level, msg)                      \
             fprintf(stdout, "%s : %s:%s : "         \
                             "%s : %d : "            \
                             "%d : %s\n",            \
@@ -53,64 +51,68 @@
                             __LINE__, level, msg);  \
 
     #define LOG(level, ...) \
-        ikev2::logging::logger::getLogger().log(level, __VA_ARGS__)
+        Logging::Logger::getLogger().log(level, __VA_ARGS__) \
 
     #define TRACE() \
-        LOG(ikev2::logging::INFO, "%s : %s : %d", __FILE__, \
-                                                  __PRETTY_FUNCTION__, \
-                                                  __LINE__);
+        LOG(INFO, "TRACE %s : %s : %d", __FILE__,            \
+                                        __PRETTY_FUNCTION__, \
+                                        __LINE__); \
+
+    #define LOGT(fmt, ...) do { fprintf(stderr, fmt, ##__VA_ARGS__); \
+                                fprintf(stderr, "\n");} while(0);
 #else
-    #define TRACEF(level, msg) (void) 0
-    #define TRACEO(level, msg) (void) 0
-    #define LOG(level, ...) (void) 0
-    #define TRACE() (void) 0
+    #define TRACEF(level, msg)  (void) 0
+    #define TRACEO(level, msg)  (void) 0
+    #define LOG(level, ...)     (void) 0
+    #define TRACE()             (void) 0
+    #define LOGT(msg, ...)      (void) 0
 #endif
 
-#define IKEV2_LOGOBJ_NAME "ikev2logger"
+#define IKEV2_LOG_OBJ_NAME "ikev2Logger"
 #define IKEV2_LOG_FILENAME "ikev2.log"
 
-namespace ikev2 {
-namespace logging {
+enum LogLevel {
+    EMERG,   // 0 System is unusable (e.g. multiple parts down)
+    ALERT,   // 1 System is unusable (e.g. single part down)
+    CRIT,    // 2 Failure in non-primary system (e.g. backup site down)
+    ERROR,   // 3 Non-urgent failures; relay to developers
+    WARN,    // 4 Not an error, but error will occurr if nothing done.
+    NOTICE,  // 5 Events that are unusual, but not error conditions.
+    INFO,    // 6 Normal operational messages. No action required.
+    DEBUG,   // 7 Information useful during development for debugging.
+    NOTSET
+};
 
-    enum LogLevel {
-        EMERG,   // System is unusable (e.g. multiple parts down)
-        ALERT,   // System is unusable (e.g. single part down)
-        CRIT,    // Failure in non-primary system (e.g. backup site down)
-        ERROR,   // Non-urgent failures; relay to developers
-        WARN,    // Not an error, but error will occurr if nothing done.
-        NOTICE,  // Events that are unusual, but not error conditions.
-        INFO,    // Normal operational messages. No action required.
-        DEBUG,   // Information useful during development for debugging.
-        NOTSET
-    };
+// XXX future - make use of spdlog
+// XXX https://github.com/gabime/spdlog
+// XXX logging performance is #@#%U bad
 
-    class logger final {
-     public:
-        // Static function to get only one instance of logger
-        static logger& getLogger();
-        void log(LogLevel level, const char *fmt, ...);
-        void enableAllLogLevels();
-        void enableLogLevel(LogLevel level);
+namespace Logging {
 
-     private:
-        logger();
-        ~logger();
-        logger(const logger&) =delete;
-        logger(logger&&) =delete;
-        logger& operator=(const logger&) =delete;
-        logger& operator=(logger&&) =delete;
+class Logger final {
+ public:
+    Logger();
+    ~Logger();
+    // Static function to get only one instance of Logger
+    static Logger & getLogger();
+    void log(LogLevel level, const char * fmt, ...);
+    void enableAllLogLevels();
+    void enableLogLevel(LogLevel level);
 
-        log4cpp::Category& loggerCategory;
-        log4cpp::RollingFileAppender *fileAppender;
-        log4cpp::PatternLayout *loggerlayout;
-        int levelsEnabled;
-    };
+ private:
+    int levelsEnabled;
+    log4cpp::Category & loggerCategory;
+    log4cpp::RollingFileAppender * fileAppender;
+    log4cpp::PatternLayout * loggerLayout;
 
-}  // namespace logging
-}  // namespace ikev2
+    // Delete all constructors
+    Logger(const Logger &)=delete;
+    Logger(Logger &&)=delete;
+    Logger & operator=(const Logger &)=delete;
+    Logger & operator=(Logger &&)=delete;
+};
 
-// Short form to be using in while logging
-namespace LOG = ikev2::logging;
+}  // namespace Logging
 
-#endif  // _IKEV2_SRC_LOGGING_H_
-
+// Short form to be using in while Logging
+namespace LOG = Logging;

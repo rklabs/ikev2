@@ -1,4 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
  * Copyright (C) 2014 Raju Kadam <rajulkadam@gmail.com>
  *
@@ -15,32 +14,30 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef _SRC_IKEV2PACKET_H_
-#define _SRC_IKEV2PACKET_H_
 
-#include "src/logging.hh"
-#include "src/ikev2payload.hh"
+#pragma once
 
-namespace ikev2 {
-    class packet {
-     public:
-        typedef struct ikev2Header_s {
-            uint32_t initiatorSpi;
-            uint32_t responderSpi;
-            uint8_t nextPayload;
-            uint8_t version;  // Major + Minor version
-            uint16_t xchgType;
-            uint8_t flags;
-            uint32_t msgId;
-            uint32_t length;
-        }ikev2Header;
+#include "logging.hh"
+#include "ikev2payload.hh"
 
-        packet();
-        ~packet();
-        int create();
-        int destroy();
-        int clone();
-    };
-}  // namespace ikev2
+namespace IKEv2 {
+class Packet {
+ public:
+    typedef struct ikev2Header_s {
+        uint32_t initiatorSpi;
+        uint32_t responderSpi;
+        uint8_t nextPayload;
+        uint8_t version;  // Major + Minor version
+        uint16_t xchgType;
+        uint8_t flags;
+        uint32_t msgId;
+        uint32_t length;
+    }ikev2Header;
 
-#endif  // _SRC_IKEV2PACKET_H_
+    Packet();
+    ~Packet();
+    int create();
+    int destroy();
+    int clone();
+};
+}  // namespace IKEv2

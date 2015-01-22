@@ -1,4 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
  * Copyright (C) 2014 Raju Kadam <rajulkadam@gmail.com>
  *
@@ -16,14 +15,20 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _SRC_IKEV2_UTILS_H_
-#define _SRC_IKEV2_UTILS_H_
+#pragma once
 
-#include <sys/resource.h> // strlimit
+#include <sys/resource.h>  // strlimit
 #include <string.h>  // strerror
 
-#include "src/logging.hh"
+#include "logging.hh"
+
+namespace Utils {
+
+#if IKEV2_GCOV == 1
+extern "C" void __gcov_flush();
+#endif
 
 int setResourceLimit();
+int setFdNonBlocking(int);
 
-#endif  // _SRC_IKEV2_UTILS_H_
+}

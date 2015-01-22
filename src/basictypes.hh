@@ -1,4 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
  * Copyright (C) 2014 Raju Kadam <rajulkadam@gmail.com>
  *
@@ -16,8 +15,7 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _SRC_IKEV2_BASICTYPES_H_
-#define _SRC_IKEV2_BASICTYPES_H_
+#pragma once
 
 typedef int8_t SINT8;
 typedef uint8_t UINT8;
@@ -27,5 +25,3 @@ typedef int32_t SINT32;
 typedef uint32_t UINT32;
 typedef int64_t SINT64;
 typedef uint64_t UINT64;
-
-#endif  // _SRC_IKEV2_BASICTYPES_H_

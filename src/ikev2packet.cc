@@ -1,4 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
  * Copyright (C) 2014 Raju Kadam <rajulkadam@gmail.com>
  *
@@ -15,33 +14,33 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "src/ikev2packet.hh"
+#include "ikev2packet.hh"
 
-namespace ikev2 {
-    packet::packet() {
-        TRACE();
-    }
+namespace IKEv2 {
+Packet::Packet() {
+    TRACE();
+}
 
-    packet::~packet() {
-        TRACE();
-    }
+Packet::~Packet() {
+    TRACE();
+}
 
-    int packet::create() {
-        TRACE();
+int Packet::create() {
+    TRACE();
 
-        return 0;
-    }
+    return 0;
+}
 
-    int packet::destroy() {
-        TRACE();
+int Packet::destroy() {
+    TRACE();
 
-        return 0;
-    }
+    return 0;
+}
 
-    int packet::clone() {
-        TRACE();
+int Packet::clone() {
+    TRACE();
 
-        return 0;
-    }
-}  // namespace ikev2
+    return 0;
+}
+}  // namespace IKEv2
 

@@ -1,4 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
  * Copyright (C) 2014 Raju Kadam <rajulkadam@gmail.com>
  *
@@ -16,93 +15,85 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _SRC_IKEV2_CRYPTO_H_
-#define _SRC_IKEV2_CRYPTO_H_
+#pragma once
 
 #include <openssl/evp.h>
-#include <iostream>
 #include <vector>
 #include <map>
 
-#include "src/logging.hh"
+#include "logging.hh"
 
-namespace ikev2 {
-namespace crypto {
-    class cipher {
-     public:
-        enum CipherType {
-            DES,
-            DES3,
-            AES
-        };
-        cipher();
-        ~cipher();
-        int encrypt();
-        int decrypt();
-     private:
+namespace Crypto {
+class Cipher {
+    public:
+    enum CipherType {
+        DES,
+        DES3,
+        AES
     };
+    Cipher();
+    ~Cipher();
+    int encrypt();
+    int decrypt();
+    private:
+};
 
-    class hash {
-     public:
-        enum HashType {
-            MD5,
-            SHA1
-        };
-        hash();
-        ~hash();
+class Hash {
+    public:
+    enum HashType {
+        MD5,
+        SHA1
     };
+    Hash();
+    ~Hash();
+};
 
-    class hmac {
-     public:
-        hmac();
-        ~hmac();
+class Hmac {
+    public:
+    Hmac();
+    ~Hmac();
+};
+
+class DH {
+    public:
+    enum DHGROUPS {
+        DH_GROUP1,
+        DH_GROUP3,
+        DH_GROUP5
     };
+    DH();
+    ~DH();
+    int generateKey();
+    int computeKey();
+    int generateParams();
+};
 
-    class dh {
-     public:
-        enum DHGROUPS {
-            DH_GROUP1,
-            DH_GROUP3,
-            DH_GROUP5
-        };
-        dh();
-        ~dh();
-        int generateKey();
-        int computeKey();
-        int generateParams();
-    };
+// This class is abstract base class for cryto library.
+// It provides common objects(encryption, hash, dh, pki)
+// and methods present in any crypto library
+class CryptoPluginInterface {
+    protected:
+    std::map<int, Cipher> ciphers;
+    std::map<int, Hash> hashAlgs;
+    std::map<int, Hmac> hmacAlgs;
+    std::map<int, DH> diffieHellmanGrps;
+    public:
+        virtual void init()=0;
+        CryptoPluginInterface();
+        virtual ~CryptoPluginInterface();
+};
 
-    // This class is abstract base class for cryto library.
-    // It provides common objects(encryption, hash, dh, pki)
-    // and methods present in any crypto library
-    class cryptoPluginInterface {
-     protected:
-        std::map<int, cipher> ciphers;
-        std::map<int, hash> hashAlgs;
-        std::map<int, hmac> hmacAlgs;
-        std::map<int, dh> diffieHellmanGrps;
-     public:
-         virtual void init()=0;
-         cryptoPluginInterface();
-         virtual ~cryptoPluginInterface();
+class OpensslPlugin : public CryptoPluginInterface {
+    public:
+    void init();
+    OpensslPlugin();
+    ~OpensslPlugin();
+};
 
-    };
-
-    class opensslPlugin : public cryptoPluginInterface {
-     public:
+class CryptoppPlugin : public CryptoPluginInterface {
+    public:
         void init();
-        opensslPlugin();
-        ~opensslPlugin();
-    };
-
-    class cryptoppPlugin : public cryptoPluginInterface {
-     public:
-         void init();
-         cryptoppPlugin();
-         ~cryptoppPlugin();
-
-    };
+        CryptoppPlugin();
+        ~CryptoppPlugin();
+};
 }  // namespace crypto
-}  // namespace ikev2
-
-#endif  // _SRC_IKEV2_CRYPTO_H_

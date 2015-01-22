@@ -1,4 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
  * Copyright (C) 2014 Raju Kadam <rajulkadam@gmail.com>
  *
@@ -16,16 +15,12 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _SRC_IKEV2_SM_H_
-#define _SRC_IKEV2_SM_H_
+#pragma once
 
-#include "src/logging.hh"
+#include "logging.hh"
 
-namespace ikev2 {
-namespace sm {
+namespace IKEv2 {
+namespace Sm {
 
 }  // namespace sm
 }  // namespace ikev2
-
-
-#endif  // _SRC_IKEV2_SM_H_

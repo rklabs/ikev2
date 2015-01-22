@@ -16,23 +16,12 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _IKEV2_SRC_THREADPOOL_H_
-#define _IKEV2_SRC_THREADPOOL_H_
+#include "ikev2sm.hh"
 
-#include <thread>
-#include <future>
+namespace IKEv2 {
+namespace Sm {
 
-#include "src/logging.hh"
-
-namespace ikev2 {
-    class job final {
-     public:
-        job();
-        ~job();
-        int enqueue();
-    private:
-        int jobId;
-    };
+}  // namespace sm
 }  // namespace ikev2
 
-#endif  // _IKEV2_SRC_THREADPOOL_H_
+

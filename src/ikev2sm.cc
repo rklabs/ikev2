@@ -1,4 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
  * Copyright (C) 2014 Raju Kadam <rajulkadam@gmail.com>
  *
@@ -16,10 +15,10 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "src/ikev2sm.hh"
+#include "ikev2sm.hh"
 
-namespace ikev2 {
-namespace sm {
+namespace IKEv2 {
+namespace Sm {
 
 }  // namespace sm
 }  // namespace ikev2

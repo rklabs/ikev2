@@ -1,4 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
  * Copyright (C) 2014 Raju Kadam <rajulkadam@gmail.com>
  *
@@ -16,8 +15,7 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _SRC_IKEV2_EXCEPTION_H_
-#define _SRC_IKEV2_EXCEPTION_H_
+#pragma once
 
 #include <exception>
 
@@ -27,4 +25,3 @@ class myException : public std::exception {
         return "myException";
     }
 };
-#endif  // _SRC_IKEV2_EXCEPTION_H_

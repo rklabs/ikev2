@@ -1,4 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
  * Copyright (C) 2014 Raju Kadam <rajulkadam@gmail.com>
  *
@@ -16,12 +15,111 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _SRC_IKEV2_TIMER_H_
-#define _SRC_IKEV2_TIMER_H_
+#pragma once
 
-#include "src/logging.hh"
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+#include <algorithm>  // std::sort
+#include <thread>
+#include <mutex>
+#include <chrono>
+#include <future>
+#include <deque>
+#include <vector>
+#include <functional>
+#include <condition_variable>
+#include <memory>
 
-namespace ikev2 {
+#include "logging.hh"
+#include "threadpool.hh"
+
+#define ENQUEUE_TIMER_TASK(...) Timer::AsyncTimer::getAsyncTimer().create(__VA_ARGS__);
+
+namespace Timer {
+
+class Event {
+ public:
+    Event(int id, int timeLeft,
+          int timeout, bool repeat,
+          int repeatCount,
+          std::chrono::time_point<std::chrono::system_clock> startTime,
+          std::function<void()> eventHandler);
+    int id_;       // unique id for each event object
+    int timeLeft_;
+    int timeout_;  // in millisec
+    bool repeat_;  // repeat event indefinitely
+    int repeatCount_;
+    // timestamp of event creation
+    std::chrono::time_point<std::chrono::system_clock> startTime_;
+    std::function<void()> eventHandler_;
+};
+
+// Make shared pointer for container objects
+// When container is deleted all references
+// to shared objects will be deleted and hence
+// objects in container will also be deleted
+typedef std::shared_ptr<Event> EventPtr;
+
+class AsyncTimer {
+ public:
+    AsyncTimer();
+    ~AsyncTimer();
+
+    template<class F, class... Args>
+    int create(int timeout, bool repeat, F&& f, Args&&... args);
+    int cancel(int id);
+
+    static AsyncTimer & getAsyncTimer();
+    int timerLoop();
+    void shutdown();
+
+    AsyncTimer(const AsyncTimer &);
+    AsyncTimer(AsyncTimer &&);
+    AsyncTimer & operator=(const AsyncTimer &);
+    AsyncTimer & operator=(AsyncTimer &&);
+ private:
+    std::deque<EventPtr> eventQ_;
+
+    std::mutex eventQMutex_;
+    std::condition_variable eventQCond_;
+
+    std::mutex emptyQMutex_;
+    std::condition_variable emptyQCond_;
+    bool stopThread_;
+    bool fallThrough_;
+};
+
+template<class F, class... Args>
+int AsyncTimer::create(int timeout, bool repeat, F&& f, Args&&... args) {
+    TRACE();
+
+    // Define generic funtion with any number / type of args
+    // and return type, make it callable without args(func())
+    // using std::bind
+    auto func = std::bind(std::forward<F>(f), std::forward<Args>(args)...);
+    std::function<void()> task = func;
+
+    // Create new event object
+    int id = std::rand();
+    {
+        std::unique_lock<std::mutex> lock(eventQMutex_);
+        eventQ_.push_back(EventPtr(new Event(id, timeout, timeout, repeat, 0,
+                                             std::chrono::system_clock::now(),
+                                             task)));
+
+        // The timer loop may already be waiting for longer
+        // timeout value. If new event with lesser timeout
+        // gets added to eventQ_ its necessary to notify
+        // the conditional variable and fall through
+        if (timeout < eventQ_.back()->timeLeft_) {
+            fallThrough_ = true;
+        }
+
+        emptyQCond_.notify_one();
+
+        return id;
+    }
+}
 
 }
-#endif  // _SRC_IKEV2_TIMER_H_

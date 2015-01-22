@@ -1,4 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
  * Copyright (C) 2014 Raju Kadam <rajulkadam@gmail.com>
  *
@@ -16,73 +15,70 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "src/crypto.hh"
+#include "crypto.hh"
 
-namespace ikev2 {
-namespace crypto {
-    cipher::cipher() {
-        TRACE();
-    }
+namespace Crypto {
+Cipher::Cipher() {
+    TRACE();
+}
 
-    cipher::~cipher() {
-        TRACE();
-    }
+Cipher::~Cipher() {
+    TRACE();
+}
 
-    hash::hash() {
-        TRACE();
-    }
+Hash::Hash() {
+    TRACE();
+}
 
-    hash::~hash() {
-        TRACE();
-    }
-    
-    hmac::hmac() {
-        TRACE();
-    }
+Hash::~Hash() {
+    TRACE();
+}
 
-    hmac::~hmac() {
-        TRACE();
-    }
+Hmac::Hmac() {
+    TRACE();
+}
 
-    dh::dh() {
-        TRACE();
-    }
+Hmac::~Hmac() {
+    TRACE();
+}
 
-    dh::~dh() {
-        TRACE();
-    }
+DH::DH() {
+    TRACE();
+}
 
-    cryptoPluginInterface::cryptoPluginInterface() {
-        TRACE();
-    }
+DH::~DH() {
+    TRACE();
+}
 
-    cryptoPluginInterface::~cryptoPluginInterface() {
-        TRACE();
-    }
+CryptoPluginInterface::CryptoPluginInterface() {
+    TRACE();
+}
 
-    opensslPlugin::opensslPlugin() {
-        TRACE();
-    }
+CryptoPluginInterface::~CryptoPluginInterface() {
+    TRACE();
+}
 
-    opensslPlugin::~opensslPlugin() {
-        TRACE();
-    }
+OpensslPlugin::OpensslPlugin() {
+    TRACE();
+}
 
-    cryptoppPlugin::cryptoppPlugin() {
-        TRACE();
-    }
+OpensslPlugin::~OpensslPlugin() {
+    TRACE();
+}
 
-    cryptoppPlugin::~cryptoppPlugin() {
-        TRACE();
-    }
+CryptoppPlugin::CryptoppPlugin() {
+    TRACE();
+}
 
-    void opensslPlugin::init() {
-        TRACE();
-    }
+CryptoppPlugin::~CryptoppPlugin() {
+    TRACE();
+}
 
-    void cryptoppPlugin::init() {
-        TRACE();
-    }
+void OpensslPlugin::init() {
+    TRACE();
+}
+
+void CryptoppPlugin::init() {
+    TRACE();
+}
 }  // namespace crypto
-}  // namespace ikev2
-

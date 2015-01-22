@@ -1,4 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
  * Copyright (C) 2014 Raju Kadam <rajulkadam@gmail.com>
  *
@@ -15,26 +14,23 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef _SRC_IKEV2_SA_H_
-#define _SRC_IKEV2_SA_H_
 
-#include "src/logging.hh"
+#pragma once
 
-namespace ikev2 {
-namespace sa {
+#include "logging.hh"
 
-        class ikev2sa {
-            ikev2sa();
-            ~ikev2sa();
-        };
+namespace IKEv2 {
+namespace SA {
 
-        class ipsecsa {
-            ipsecsa();
-            ~ipsecsa();
-        };
+class ikev2sa {
+    ikev2sa();
+    ~ikev2sa();
+};
 
-}  // namespace sa
-}  // namespace ikev2
+class ipsecsa {
+    ipsecsa();
+    ~ipsecsa();
+};
 
-
-#endif  // _SRC_IKEV2_SA_H_
+}  // namespace SA
+}  // namespace IKEv2

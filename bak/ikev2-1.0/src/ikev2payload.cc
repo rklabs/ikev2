@@ -15,18 +15,12 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include "ikev2payload.hh"
 
-#ifndef _SRC_IKEV2_CONFIG_H_
-#define _SRC_IKEV2_CONFIG_H_
+namespace IKEv2 {
+namespace Payload {
 
-#include "src/logging.hh"
+}  // namespace payload
+}  // namespace IKEv2
 
-namespace ikev2 {
-    class config {
-     public:
-        config();
-        ~config();
-    };
-}  // namespace ikev2
 
-#endif  // _SRC_IKEV2_CONFIG_H_

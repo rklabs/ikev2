@@ -84,10 +84,18 @@ host_triplet = @host@
 
 # Enable code coverage
 @IKEV2_GCOV_TRUE@am__append_2 = -fprofile-arcs -ftest-coverage
-bin_PROGRAMS = $(am__EXEEXT_1)
+bin_PROGRAMS = $(am__EXEEXT_1) $(am__EXEEXT_2)
+
+# enable google's backtrace support
+@IKEV2_DBG_TRUE@am__append_3 = backward.cc
+# boost
+#ikev2_LDFLAGS += -lboost_system -lboost_thread
 
 # Enable coverage
-@IKEV2_GCOV_TRUE@am__append_3 = --coverage
+@IKEV2_GCOV_TRUE@am__append_4 = --coverage
+
+# enable google's backtrace support
+@IKEV2_DBG_TRUE@am__append_5 = -ldw
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/depcomp
@@ -106,18 +114,32 @@ CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__EXEEXT_1 = ikev2$(EXEEXT)
+am__EXEEXT_2 = echo$(EXEEXT)
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_ikev2_OBJECTS = ikev2main.$(OBJEXT) ikev2payload.$(OBJEXT) \
-	ikev2packet.$(OBJEXT) sa.$(OBJEXT) ikev2sm.$(OBJEXT) \
-	logging.$(OBJEXT) network.$(OBJEXT) crypto.$(OBJEXT) \
-	job.$(OBJEXT) config.$(OBJEXT) timer.$(OBJEXT) utils.$(OBJEXT)
-ikev2_OBJECTS = $(am_ikev2_OBJECTS)
-ikev2_DEPENDENCIES =
+am_echo_OBJECTS = test.$(OBJEXT)
+echo_OBJECTS = $(am_echo_OBJECTS)
+echo_LDADD = $(LDADD)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+echo_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+	$(CXXFLAGS) $(echo_LDFLAGS) $(LDFLAGS) -o $@
+am__ikev2_SOURCES_DIST = ikev2main.cc ikev2payload.cc ikev2packet.cc \
+	sa.cc ikev2sm.cc logging.cc network.cc crypto.cc threadpool.cc \
+	ikev2config.cc timer.cc utils.cc synchro.cc processor.cc \
+	asyncio.cc backward.cc
+@IKEV2_DBG_TRUE@am__objects_1 = backward.$(OBJEXT)
+am_ikev2_OBJECTS = ikev2main.$(OBJEXT) ikev2payload.$(OBJEXT) \
+	ikev2packet.$(OBJEXT) sa.$(OBJEXT) ikev2sm.$(OBJEXT) \
+	logging.$(OBJEXT) network.$(OBJEXT) crypto.$(OBJEXT) \
+	threadpool.$(OBJEXT) ikev2config.$(OBJEXT) timer.$(OBJEXT) \
+	utils.$(OBJEXT) synchro.$(OBJEXT) processor.$(OBJEXT) \
+	asyncio.$(OBJEXT) $(am__objects_1)
+ikev2_OBJECTS = $(am_ikev2_OBJECTS)
+ikev2_DEPENDENCIES =
 ikev2_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
 	$(CXXFLAGS) $(ikev2_LDFLAGS) $(LDFLAGS) -o $@
@@ -155,8 +177,8 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(ikev2_SOURCES)
-DIST_SOURCES = $(ikev2_SOURCES)
+SOURCES = $(echo_SOURCES) $(ikev2_SOURCES)
+DIST_SOURCES = $(echo_SOURCES) $(am__ikev2_SOURCES_DIST)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -337,21 +359,24 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 CPPLINT = cpplint
 FINALTARGET = ikev2
+ECHO = echo
 AM_CPPFLAGS = -DPACKAGE_LOCALE_DIR=\""$(localedir)"\" \
 	-DPACKAGE_SRC_DIR=\""$(srcdir)"\" \
 	-DPACKAGE_DATA_DIR=\""$(pkgdatadir)"\" -Wall -Werror \
-	-Wno-unused $(am__append_1) $(am__append_2)
+	$(am__append_1) $(am__append_2)
 ikev2_SOURCES = ikev2main.cc ikev2payload.cc ikev2packet.cc sa.cc \
-	ikev2sm.cc logging.cc network.cc crypto.cc job.cc config.cc \
-	timer.cc utils.cc
-
-# linker flags for 3rd party libgs
+	ikev2sm.cc logging.cc network.cc crypto.cc threadpool.cc \
+	ikev2config.cc timer.cc utils.cc synchro.cc processor.cc \
+	asyncio.cc $(am__append_3)
+# linker flags for 3rd party libs
 # std::thread
-# logging log4cpp
+# log4cpp
 # openssl
 ikev2_LDFLAGS = -lpthread -Wl,--no-as-needed -llog4cpp -lssl \
-	$(am__append_3)
+	$(am__append_4) $(am__append_5)
 ikev2_LDADD = 
+echo_SOURCES = test.cc
+echo_LDFLAGS = --coverage -lpthread -Wl,--no-as-needed -fprofile-arcs -ftest-coverage
 all: all-am
 
 .SUFFIXES:
@@ -436,6 +461,10 @@ clean-binPROGRAMS:
 	echo " rm -f" $$list; \
 	rm -f $$list
 
+echo$(EXEEXT): $(echo_OBJECTS) $(echo_DEPENDENCIES) $(EXTRA_echo_DEPENDENCIES) 
+	@rm -f echo$(EXEEXT)
+	$(AM_V_CXXLD)$(echo_LINK) $(echo_OBJECTS) $(echo_LDADD) $(LIBS)
+
 ikev2$(EXEEXT): $(ikev2_OBJECTS) $(ikev2_DEPENDENCIES) $(EXTRA_ikev2_DEPENDENCIES) 
 	@rm -f ikev2$(EXEEXT)
 	$(AM_V_CXXLD)$(ikev2_LINK) $(ikev2_OBJECTS) $(ikev2_LDADD) $(LIBS)
@@ -446,16 +475,21 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/config.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/asyncio.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/backward.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/crypto.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ikev2config.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ikev2main.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ikev2packet.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ikev2payload.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ikev2sm.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/job.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/logging.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/network.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/processor.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sa.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/synchro.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/threadpool.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/timer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/utils.Po@am__quote@
 
@@ -697,16 +731,23 @@ uninstall-am: uninstall-binPROGRAMS
 	uninstall-binPROGRAMS
 
 
+# Perform lint using Google's cpplint
 cpplint: ; @for cpp in *.cc; do echo "Linting $$cpp"; cpplint $$cpp; done ;
 hlint: ; @for cpp in *.hh; do echo "Linting $$cpp"; cpplint $$cpp; done ;
 
 # Enable coverage
+# Get coverage report and display in chrome
 @IKEV2_GCOV_TRUE@coverage: ;lcov --no-external -b . -d . -c -o report; genhtml -f -s -t "IKEv2" --legend --sort --function-coverage --branch-coverage --demangle-cpp report ; /opt/google/chrome/google-chrome index.html
+
+# Run valgrind
+@IKEV2_DBG_TRUE@memcheck: ;valgrind --leak-check=full --show-reachable=yes --track-fds=yes  --track-origins=yes --read-var-info=yes "./"$(FINALTARGET)
+
+cppcheck: ;cppcheck --inconclusive --enable=all .
 
 # Clean files generated by gcov
 clean-local: clean-local-check
 .PHONY: clean-local-check
-clean-local-check: ; rm -rf *.g* *.png *.html *.css home usr 4.8 report src *.out *.out.*
+clean-local-check: ; rm -rf *core* *.g* *.png *.html *.css home usr 4.8 report src *.out *.out.*
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

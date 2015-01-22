@@ -1,4 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
  * Copyright (C) 2014 Raju Kadam <rajulkadam@gmail.com>
  *
@@ -16,17 +15,11 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "src/config.hh"
+#include "processor.hh"
 
-namespace ikev2 {
-    config::config() {
-        TRACE();
-    }
-
-    config::~config() {
-        TRACE();
-    }
-
-}  // namespace ikev2
+namespace Processor {
 
 
+// create list of Connections
+// should connections be blocked waiting for work
+}
