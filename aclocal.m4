@@ -457,7 +457,7 @@ fi])
 
 
 # nls.m4 serial 5 (gettext-0.18)
-dnl Copyright (C) 1995-2003, 2005-2006, 2008-2013 Free Software Foundation,
+dnl Copyright (C) 1995-2003, 2005-2006, 2008-2014 Free Software Foundation,
 dnl Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
@@ -1079,7 +1079,8 @@ to "yes", and re-run configure.
 END
     AC_MSG_ERROR([Your 'rm' program is bad, sorry.])
   fi
-fi])
+fi
+])
 
 dnl Hook into '_AC_COMPILER_EXEEXT' early to learn its expansion.  Do not
 dnl add the conditional right here, as _AC_COMPILER_EXEEXT may be further
