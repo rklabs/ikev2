@@ -45,7 +45,7 @@ std::string & Notifier::name() {
     return name_;
 }
 
-int Notifier::create(int initVal, int flags) {
+int Notifier::createNotifier(int initVal, int flags) {
     TRACE();
     eventFd_ = eventfd(initVal, flags);
     if (eventFd_ == -1) {
@@ -67,7 +67,7 @@ int Notifier::notify(int event) {
     return ret;
 }
 
-int Notifier::wait(eventfd_t flag) {
+int Notifier::readEvent(eventfd_t flag) {
     TRACE();
 
     eventfd_t ev;

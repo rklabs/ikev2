@@ -577,7 +577,7 @@ UdpEndpoint4::receive() {
     }
 
     // Create poller object
-    if (asioHdl.create() == -1) {
+    if (asioHdl.createPoller() == -1) {
         return -1;
     }
 
@@ -589,7 +589,7 @@ UdpEndpoint4::receive() {
     // Create notifier event for stopping thread
     // Main thread will notify if thread has be be
     // cleaned up in case of success or failure
-    eventFd_ = eventNotifier_.create(0, EFD_SEMAPHORE);
+    eventFd_ = eventNotifier_.createNotifier(0, EFD_SEMAPHORE);
     if (eventFd_ == -1) {
         LOG(ERROR, "IPv4: Failed to create eventfd");
         return -1;
@@ -604,7 +604,7 @@ UdpEndpoint4::receive() {
     while (true) {
         if (!stopThread_) {
             // Block here waiting for event on poller
-            int polledFd = asioHdl.watch();
+            int polledFd = asioHdl.watchFds();
             if (polledFd == sockfd_) {
                 LOG(INFO, "IPv4: UDP socket has become available");
                 bytes = recvfrom(sockfd_, buffer, BUFFLEN, 0,
@@ -637,7 +637,7 @@ UdpEndpoint4::receive() {
                 globalRcvPktQ4.addPkt(peerData);
 
             } else if (polledFd == eventFd_) {
-                if (eventNotifier_.wait(STOP_NW_THREAD)) {
+                if (eventNotifier_.readEvent(STOP_NW_THREAD)) {
                     LOG(INFO, "IPv4: Nw thread received stop event");
                     stopThread_ = true;
                     return 0;
@@ -839,7 +839,7 @@ UdpEndpoint6::receive() {
     }
 
     // Create poller object
-    if (asioHdl.create() == -1) {
+    if (asioHdl.createPoller() == -1) {
         return -1;
     }
 
@@ -851,7 +851,7 @@ UdpEndpoint6::receive() {
     // Create notifier event for stopping thread
     // Main thread will notify if thread has be be
     // cleaned up in case of success or failure
-    eventFd_ = eventNotifier_.create(0, EFD_SEMAPHORE);
+    eventFd_ = eventNotifier_.createNotifier(0, EFD_SEMAPHORE);
     if (eventFd_ == -1) {
         LOG(ERROR, "IPv6: Failed to create eventfd");
         return -1;
@@ -866,7 +866,7 @@ UdpEndpoint6::receive() {
     while (true) {
         if (!stopThread_) {
             // Block here waiting for event on poller
-            int polledFd = asioHdl.watch();
+            int polledFd = asioHdl.watchFds();
             if (polledFd == sockfd_) {
                 LOG(INFO, "IPv6: UDP socket has become available");
                 bytes = recvfrom(sockfd_, buffer, BUFFLEN, 0,
@@ -898,7 +898,7 @@ UdpEndpoint6::receive() {
 
                 LOG(INFO, "Data: %s", buffer);
             } else if (polledFd == eventFd_) {
-                if (eventNotifier_.wait(STOP_NW_THREAD)) {
+                if (eventNotifier_.readEvent(STOP_NW_THREAD)) {
                     LOG(INFO, "IPv6: Nw thread received stop event");
                     stopThread_ = true;
                     return 0;

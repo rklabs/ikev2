@@ -34,7 +34,8 @@
 #include "logging.hh"
 #include "threadpool.hh"
 
-#define ENQUEUE_TIMER_TASK(...) Timer::AsyncTimer::getAsyncTimer().create(__VA_ARGS__);
+#define ENQUEUE_TIMER_TASK(...) \
+    Timer::AsyncTimer::getAsyncTimer().createTimerEvent(__VA_ARGS__);
 
 namespace Timer {
 
@@ -67,12 +68,12 @@ class AsyncTimer {
     ~AsyncTimer();
 
     template<class F, class... Args>
-    int create(int timeout, bool repeat, F&& f, Args&&... args);
-    int cancel(int id);
+    int createTimerEvent(int timeout, bool repeat, F&& f, Args&&... args);
+    int cancelTimerEvent(int id);
 
     static AsyncTimer & getAsyncTimer();
     int timerLoop();
-    void shutdown();
+    void shutdownHandler();
 
     AsyncTimer(const AsyncTimer &);
     AsyncTimer(AsyncTimer &&);
@@ -91,7 +92,7 @@ class AsyncTimer {
 };
 
 template<class F, class... Args>
-int AsyncTimer::create(int timeout, bool repeat, F&& f, Args&&... args) {
+int AsyncTimer::createTimerEvent(int timeout, bool repeat, F&& f, Args&&... args) {
     TRACE();
 
     // Define generic funtion with any number / type of args

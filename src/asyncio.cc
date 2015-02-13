@@ -27,7 +27,7 @@ AsyncIOHandler::AsyncIOHandler(int noOfEvents,
 
 }
 
-int AsyncIOHandler::create() {
+int AsyncIOHandler::createPoller() {
     TRACE();
 
     // Create poller fd
@@ -109,7 +109,7 @@ int AsyncIOHandler::removeFd(int fd) {
     }
 }
 
-int AsyncIOHandler::watch() {
+int AsyncIOHandler::watchFds() {
     TRACE();
     const int max = maxEvents_;
     struct epoll_event outputEvents_[max];
@@ -160,7 +160,7 @@ int AsyncIOHandler::watch() {
     return 0;
 }
 
-void AsyncIOHandler::shutdown() {
+void AsyncIOHandler::shutdownHandler() {
     // XXX mutex if multiple threads use same asyncio obj
     stopPoller_ = true;
 }

@@ -106,7 +106,7 @@ AsyncTimer::timerLoop() {
 }
 
 int
-AsyncTimer::cancel(int id) {
+AsyncTimer::cancelTimerEvent(int id) {
     TRACE();
 
     std::unique_lock<std::mutex> lock(eventQMutex_);
@@ -129,7 +129,7 @@ AsyncTimer::getAsyncTimer() {
     return asyncTimer;
 }
 
-void AsyncTimer::shutdown() {
+void AsyncTimer::shutdownHandler() {
     TRACE();
     stopThread_ = true;
     eventQCond_.notify_all();
@@ -140,7 +140,7 @@ void AsyncTimer::shutdown() {
 AsyncTimer::~AsyncTimer() {
     TRACE();
     if (!stopThread_) {
-        shutdown();
+        shutdownHandler();
 
     }
 }

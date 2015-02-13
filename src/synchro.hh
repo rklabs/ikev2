@@ -30,9 +30,9 @@ class Notifier {
    ~Notifier();
     int eventFd();
     std::string & name();
-    int create(int initVal, int flags);
+    int createNotifier(int initVal, int flags);
     int notify(int event);
-    int wait(eventfd_t flag);
+    int readEvent(eventfd_t flag);
  private:
     std::string name_;
     int eventFd_;

@@ -60,7 +60,7 @@ void cleanup(int status) {
     // Cleanup config thread
     cfgHandler.eventNotifier().notify(IKEv2::Config::STOP_CFG_THREAD);
 
-    asyncTimer.shutdown();
+    asyncTimer.shutdownHandler();
 
     // Cleanup session managers
     Network::IKEv2SessionManager4::getIKEv2SessionManager4().shutdown();

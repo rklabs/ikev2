@@ -104,7 +104,7 @@ Config::confFileWatcher() {
         return -1;
     }
 
-    if (asioHdl_.create() == -1) {
+    if (asioHdl_.createPoller() == -1) {
         return -1;
     }
 
@@ -115,7 +115,7 @@ Config::confFileWatcher() {
     // Create notifier event for stopping thread
     // Main thread will notify if thread has be be
     // cleaned up in case of success or failure
-    eventFd_ = eventNotifier_.create(0, 0);
+    eventFd_ = eventNotifier_.createNotifier(0, 0);
     if (eventFd_ == -1) {
         LOG(ERROR, "Failed to create eventfd");
         return -1;
@@ -129,7 +129,7 @@ Config::confFileWatcher() {
     while (true) {
          if (!stopThread_) {
             // Block here waiting for event
-            int polledFd = asioHdl_.watch();
+            int polledFd = asioHdl_.watchFds();
             if (polledFd == inotifyFd_) {
                 // Read event
                 buffLength = read(inotifyFd_, buffer, INOTIFY_BUFFER_LEN);
@@ -165,7 +165,7 @@ Config::confFileWatcher() {
                     ptr += EVENT_SIZE + event->len;
                 }  // end of for (p = buffer)...
             } else if (polledFd == eventFd_) {
-                if (eventNotifier_.wait(STOP_CFG_THREAD)) {
+                if (eventNotifier_.readEvent(STOP_CFG_THREAD)) {
                     LOG(INFO, "Cfg thread received stop event");
                     stopThread_ = true;
                 }

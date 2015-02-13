@@ -32,12 +32,12 @@ namespace ASIO {
 class AsyncIOHandler {
  public:
     AsyncIOHandler(int noOfEvents, std::string pollerName);
-    int create();
+    int createPoller();
     int addFd(int fd);
     int removeFd(int fd);
     int modifyFd(int fd, int op);
-    int watch();
-    void shutdown();
+    int watchFds();
+    void shutdownHandler();
     ~AsyncIOHandler();
     typedef std::shared_ptr<struct epoll_event> sharedPtrEpollEvent;
     const int EPOLL_BLOCK_FD = -1;
