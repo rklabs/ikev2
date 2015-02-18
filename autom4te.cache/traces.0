@@ -2850,7 +2850,7 @@ m4trace:configure.ac:24: -1- m4_pattern_allow([^am__fastdepCXX_TRUE$])
 m4trace:configure.ac:24: -1- m4_pattern_allow([^am__fastdepCXX_FALSE$])
 m4trace:configure.ac:24: -1- _AM_SUBST_NOTMAKE([am__fastdepCXX_TRUE])
 m4trace:configure.ac:24: -1- _AM_SUBST_NOTMAKE([am__fastdepCXX_FALSE])
-m4trace:configure.ac:29: -1- IT_PROG_INTLTOOL([0.35.0])
+m4trace:configure.ac:29: -1- IT_PROG_INTLTOOL([])
 m4trace:configure.ac:29: -1- AM_NLS
 m4trace:configure.ac:29: -1- m4_pattern_allow([^USE_NLS$])
 m4trace:configure.ac:29: -1- m4_pattern_allow([^INTLTOOL_UPDATE$])
