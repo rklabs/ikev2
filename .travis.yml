@@ -6,6 +6,8 @@ compiler:
 before_install:
 - echo "before install"
 - autoconf --version
+- ls
+- pwd
 
 script: ./configure && make && make ikev2test
 
