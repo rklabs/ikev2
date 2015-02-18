@@ -6,7 +6,7 @@ compiler:
 before_install:
 - echo "before install"
 
-script: cd rklabs/IKEv2 && autoreconf && ./configure && make && make ikev2test
+script: autoconf && ./configure && make && make ikev2test
 
 os:
 - linux
