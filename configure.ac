@@ -26,7 +26,7 @@ AC_PROG_CXX
 dnl ***************************************************************************
 dnl Internationalization
 dnl ***************************************************************************
-IT_PROG_INTLTOOL([0.35.0])
+IT_PROG_INTLTOOL([])
 
 GETTEXT_PACKAGE=ikev2
 AC_SUBST(GETTEXT_PACKAGE)
