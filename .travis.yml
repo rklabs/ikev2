@@ -6,7 +6,7 @@ compiler:
 before_install:
 - echo "before install"
 
-script: make ikev2test
+script: ./configure && make && make ikev2test
 
 os:
 - linux
