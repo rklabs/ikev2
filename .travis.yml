@@ -1,0 +1,12 @@
+language: cpp
+
+compiler:
+- g++
+
+before_install:
+- echo "before install"
+
+script: make ikev2test
+
+os:
+- linux

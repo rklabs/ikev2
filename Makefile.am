@@ -28,3 +28,5 @@ DISTCLEANFILES = intltool-extract \
 # Remove doc directory on uninstall
 uninstall-local:
 	-rm -r $(docdir)
+
+ikev2test: ;"./"test/ikev2_test

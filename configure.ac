@@ -45,5 +45,6 @@ m4_include(m4/macros/gcov.m4)
 AC_OUTPUT([
     Makefile
     src/Makefile
+    test/Makefile
     po/Makefile.in
 ])
