@@ -6,7 +6,7 @@ compiler:
 before_install:
 - echo "before install"
 
-script: autoconf && ./configure && make && make ikev2test
+script: autoreconf --add-missing && ./configure && make && make ikev2test
 
 os:
 - linux
