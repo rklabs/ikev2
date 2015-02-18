@@ -5,6 +5,7 @@ compiler:
 
 before_install:
 - echo "before install"
+- autoconf --version
 
 script: ./configure && make && make ikev2test
 
