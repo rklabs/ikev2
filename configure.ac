@@ -5,7 +5,7 @@ AC_INIT(ikev2, 1.0)
 
 AC_CONFIG_HEADERS([config.h])
 
-AM_INIT_AUTOMAKE([subdir-objects])
+AM_INIT_AUTOMAKE([1.9 foreign subdir-objects])
 
 AC_CONFIG_MACRO_DIR([m4])
 
