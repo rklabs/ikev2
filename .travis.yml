@@ -4,11 +4,7 @@ compiler:
 - g++
 
 before_install:
-- echo "before install"
-- autoconf --version
-- automake --version
-- ls
-- pwd
+- sudo apt-get install -qq intltool
 - autoreconf --install
 
 script: ./configure && make && make ikev2test
