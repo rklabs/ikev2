@@ -9,7 +9,7 @@ before_install:
 - automake --version
 - ls
 - pwd
-- automake --install
+- autoreconf --install
 
 script: ./configure && make && make ikev2test
 
