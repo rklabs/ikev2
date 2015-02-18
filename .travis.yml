@@ -1,7 +1,7 @@
 language: cpp
 
 compiler:
-- g++
+  - g++
 
 before_install:
   - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
@@ -18,7 +18,10 @@ install:
   - ./configure
   - ls
 
-script: make && make ikev2test
+script:
+  - make
+  - ls test
+  - make ikev2test
 
 os:
-- linux
+  - linux
