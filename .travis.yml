@@ -6,6 +6,7 @@ compiler:
 before_install:
 - echo "before install"
 - autoconf --version
+- automake --version
 - ls
 - pwd
 
