@@ -13,8 +13,8 @@ install:
   - sudo apt-get install -qq liblog4cpp5 liblog4cpp5-dev
   - sudo apt-get install -qq libboost-all-dev
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 90
+  - autoreconf -ivf
   - ./configure
-  - ls
 
 script:
   - make
