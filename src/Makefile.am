@@ -2,7 +2,7 @@
 
 CPPLINT = cpplint
 FINALTARGET = ikev2
-ECHO = echo
+ECHO = echotest
 
 AM_CPPFLAGS = -DPACKAGE_LOCALE_DIR=\""$(localedir)"\"
 AM_CPPFLAGS += -DPACKAGE_SRC_DIR=\""$(srcdir)"\"
@@ -23,25 +23,23 @@ endif
 bin_PROGRAMS = $(FINALTARGET) $(ECHO)
 
 ## Put all your source files here
-ikev2_SOURCES = ikev2main.cc
-ikev2_SOURCES += ikev2payload.cc
-ikev2_SOURCES += ikev2packet.cc
-ikev2_SOURCES += sa.cc
-ikev2_SOURCES += ikev2sm.cc
-ikev2_SOURCES += logging.cc
-ikev2_SOURCES += network.cc
-ikev2_SOURCES += crypto.cc
-ikev2_SOURCES += threadpool.cc
-ikev2_SOURCES += ikev2config.cc
-ikev2_SOURCES += timer.cc
-ikev2_SOURCES += utils.cc
-ikev2_SOURCES += synchro.cc
-ikev2_SOURCES += processor.cc
-ikev2_SOURCES += asyncio.cc
+ikev2_SOURCES = IKEv2Main.cc
+ikev2_SOURCES += IKEv2Payload.cc
+ikev2_SOURCES += IKEv2Packet.cc
+ikev2_SOURCES += IKEv2Sm.cc
+ikev2_SOURCES += Logging.cc
+ikev2_SOURCES += Network.cc
+ikev2_SOURCES += Crypto.cc
+ikev2_SOURCES += Threadpool.cc
+ikev2_SOURCES += IKEv2Config.cc
+ikev2_SOURCES += Timer.cc
+ikev2_SOURCES += Utils.cc
+ikev2_SOURCES += Synchro.cc
+ikev2_SOURCES += Asyncio.cc
 
 # enable google's backtrace support
 if IKEV2_DBG
-    ikev2_SOURCES += backward.cc
+    ikev2_SOURCES += Backward.cc
 endif
 # linker flags for 3rd party libs
 # std::thread
@@ -51,7 +49,7 @@ ikev2_LDFLAGS += -llog4cpp
 # openssl
 ikev2_LDFLAGS += -lssl
 # boost
-#ikev2_LDFLAGS += -lboost_system -lboost_thread
+ikev2_LDFLAGS += -lboost_system
 
 # Enable coverage
 if IKEV2_GCOV
@@ -65,8 +63,10 @@ endif
 
 ikev2_LDADD =
 
-echo_SOURCES = test.cc
-echo_LDFLAGS = --coverage -lpthread -Wl,--no-as-needed -fprofile-arcs -ftest-coverage
+##################################
+echotest_SOURCES = EchoTest.cc
+echotest_LDFLAGS = --coverage -lpthread -Wl,--no-as-needed -fprofile-arcs -ftest-coverage
+##################################
 
 # Perform lint using Google's cpplint
 cpplint: ; @for cpp in *.cc; do echo "Linting $$cpp"; cpplint $$cpp; done ;
@@ -76,6 +76,7 @@ hlint: ; @for cpp in *.hh; do echo "Linting $$cpp"; cpplint $$cpp; done ;
 if IKEV2_GCOV
 # Get coverage report and display in chrome
 coverage: ;lcov --no-external -b . -d . -c -o report; genhtml -f -s -t "IKEv2" --legend --sort --function-coverage --branch-coverage --demangle-cpp report ; /opt/google/chrome/google-chrome index.html
+
 endif
 
 # Run valgrind
