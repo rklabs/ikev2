@@ -25,7 +25,7 @@
 #include <vector>
 #include <algorithm> // std::find_if
 
-#include "Logging.hh"
+#include "logging.hh"
 
 namespace ASIO {
 

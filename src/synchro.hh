@@ -17,15 +17,28 @@
 
 #pragma once
 
-#include <string>
-#include "Logging.hh"
+#include <unistd.h>
+#include <inttypes.h>
+#include <sys/eventfd.h>
 
-namespace IKEv2 {
-namespace Payload {
-typedef struct encoder_s {
-    S32 type;
-    std::string description;
-}encoder;
+#include "basictypes.hh"
+#include "logging.hh"
 
-}  // namespace payload
-}  // namespace ikev2
+namespace Synchro {
+
+class Notifier {
+ public:
+    Notifier(std::string notifierName);
+    ~Notifier();
+    S32 eventFd();
+    std::string & name();
+    S32 createNotifier(S32 initVal, S32 flags);
+    S32 notify(S32 event);
+    S32 readEvent(eventfd_t flag);
+ private:
+    std::string name_;
+    S32 eventFd_;
+
+};
+
+}  // namespace Synchro

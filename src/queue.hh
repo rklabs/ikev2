@@ -57,7 +57,7 @@ Queue<T>::addPkt(Ptr elem) {
 
 template<typename T>
 bool
-Queue<T>::getPkt(Ptr & o) {
+Queue<T>::getPkt(Ptr & elem) {
     TRACE();
     {
         std::unique_lock<std::mutex> lock(queueMutex_);
@@ -65,7 +65,7 @@ Queue<T>::getPkt(Ptr & o) {
                                       !this->queue().empty(); });
 
         if (!opaqueQ_.empty()) {
-            o = opaqueQ_.back();
+            elem = opaqueQ_.back();
             opaqueQ_.pop_back();
             return true;
         } else {

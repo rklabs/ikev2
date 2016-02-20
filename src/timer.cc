@@ -15,7 +15,7 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "Timer.hh"
+#include "timer.hh"
 
 namespace Timer {
 

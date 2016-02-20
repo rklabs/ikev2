@@ -24,7 +24,7 @@
 // - g++/clang++ -lbfd ...
 // #define BACKWARD_HAS_BFD 1
 
-#include "Backward.hh"
+#include "backward.hh"
 
 namespace backward {
 

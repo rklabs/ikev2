@@ -29,7 +29,7 @@
 #include <log4cpp/Priority.hh>
 #include <log4cpp/RollingFileAppender.hh>
 
-#include "BasicTypes.hh"
+#include "basictypes.hh"
 
 #ifdef IKEV2_DBG
     #define TRACEF(level, msg)                  \

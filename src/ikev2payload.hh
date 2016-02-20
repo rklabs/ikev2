@@ -17,19 +17,15 @@
 
 #pragma once
 
-#include "BasicTypes.hh"
+#include <string>
+#include "logging.hh"
 
-namespace Socket {
+namespace IKEv2 {
+namespace Payload {
+typedef struct encoder_s {
+    S32 type;
+    std::string description;
+}encoder;
 
-class UnixSocket {
- public:
-    U32 createSocket();
-    U32 send();
-    U32 receive();
-    void teardown();
-    U32 setSocketOptions();
- private:
-    S32 sockfd_;
-};
-
-} // namespace Socket
+}  // namespace payload
+}  // namespace ikev2

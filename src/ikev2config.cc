@@ -15,7 +15,7 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "IKEv2Config.hh"
+#include "ikev2config.hh"
 
 namespace IKEv2 {
 

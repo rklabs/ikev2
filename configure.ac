@@ -33,8 +33,8 @@ AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [GETTEXT package name])
 AM_GLIB_GNU_GETTEXT
 
-dnl ************ rkadam Adding C++11 support ********************
-AC_SUBST([AM_CXXFLAGS], ["-std=c++11"])
+dnl ************ rkadam Adding C++14 support ********************
+AC_SUBST([AM_CXXFLAGS], ["-std=c++14"])
 
 dnl ********************** libtool support *************************
 LT_INIT

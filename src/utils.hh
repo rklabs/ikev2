@@ -20,8 +20,8 @@
 #include <sys/resource.h>  // strlimit
 #include <string.h>  // strerror
 
-#include "BasicTypes.hh"
-#include "Logging.hh"
+#include "basictypes.hh"
+#include "logging.hh"
 
 namespace Utils {
 

@@ -14,31 +14,12 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include "ikev2payload.hh"
 
-#pragma once
+namespace IKEv2 {
+namespace Payload {
 
-#include <unistd.h>
-#include <inttypes.h>
-#include <sys/eventfd.h>
+}  // namespace payload
+}  // namespace IKEv2
 
-#include "BasicTypes.hh"
-#include "Logging.hh"
 
-namespace Synchro {
-
-class Notifier {
- public:
-    Notifier(std::string notifierName);
-    ~Notifier();
-    S32 eventFd();
-    std::string & name();
-    S32 createNotifier(S32 initVal, S32 flags);
-    S32 notify(S32 event);
-    S32 readEvent(eventfd_t flag);
- private:
-    std::string name_;
-    S32 eventFd_;
-
-};
-
-}  // namespace Synchro

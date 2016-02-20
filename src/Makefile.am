@@ -23,23 +23,23 @@ endif
 bin_PROGRAMS = $(FINALTARGET) $(ECHO)
 
 ## Put all your source files here
-ikev2_SOURCES = IKEv2Main.cc
-ikev2_SOURCES += IKEv2Payload.cc
-ikev2_SOURCES += IKEv2Packet.cc
-ikev2_SOURCES += IKEv2Sm.cc
-ikev2_SOURCES += Logging.cc
-ikev2_SOURCES += Network.cc
-ikev2_SOURCES += Crypto.cc
-ikev2_SOURCES += Threadpool.cc
-ikev2_SOURCES += IKEv2Config.cc
-ikev2_SOURCES += Timer.cc
-ikev2_SOURCES += Utils.cc
-ikev2_SOURCES += Synchro.cc
-ikev2_SOURCES += Asyncio.cc
+ikev2_SOURCES = ikev2main.cc
+ikev2_SOURCES += ikev2payload.cc
+ikev2_SOURCES += ikev2pkt.cc
+ikev2_SOURCES += ikev2sm
+ikev2_SOURCES += logging.cc
+ikev2_SOURCES += network.cc
+ikev2_SOURCES += crypto.cc
+ikev2_SOURCES += threadpool.cc
+ikev2_SOURCES += ikev2config.cc
+ikev2_SOURCES += timer.cc
+ikev2_SOURCES += utils.cc
+ikev2_SOURCES += synchro.cc
+ikev2_SOURCES += asyncio.cc
 
 # enable google's backtrace support
 if IKEV2_DBG
-    ikev2_SOURCES += Backward.cc
+    ikev2_SOURCES += backward.cc
 endif
 # linker flags for 3rd party libs
 # std::thread
@@ -64,7 +64,7 @@ endif
 ikev2_LDADD =
 
 ##################################
-echotest_SOURCES = EchoTest.cc
+echotest_SOURCES = echotest.cc
 echotest_LDFLAGS = --coverage -lpthread -Wl,--no-as-needed -fprofile-arcs -ftest-coverage
 ##################################
 

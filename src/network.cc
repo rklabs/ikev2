@@ -15,7 +15,7 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "Network.hh"
+#include "network.hh"
 
 namespace Network {
 
@@ -90,8 +90,8 @@ IKEv2SessionManager4::handleSession() {
         // Create new connection and add to connectionMap
         } else {
             LOGT("Creating new session");
-            auto c = IKEv2Session4::Ptr(new IKEv2Session4(elem->hash));
-            globalIKEv2Session4Map.add(elem->hash, c);
+            auto conn = IKEv2Session4::Ptr(new IKEv2Session4(elem->hash));
+            globalIKEv2Session4Map.add(elem->hash, conn);
             globalSendPktQ4.addPkt(elem);
             ENQUEUE_TIMER_TASK(3000, false, &IKEv2Session4::handleTimeout, c, elem->hash);
         }

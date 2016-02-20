@@ -29,16 +29,16 @@
 #include <condition_variable>
 #include <boost/algorithm/string.hpp>
 
-#include "Logging.hh"
-#include "BasicTypes.hh"
-#include "Synchro.hh"
-#include "Asyncio.hh"
-#include "Utils.hh"
-#include "Timer.hh"
-#include "Queue.hh"
-#include "Map.hh"
-#include "BasicTypes.hh"
-#include "IpAddress.hh"
+#include "logging.hh"
+#include "basictypes.hh"
+#include "synchro.hh"
+#include "asyncio.hh"
+#include "utils.hh"
+#include "timer.hh"
+#include "queue.hh"
+#include "map.hh"
+#include "basictypes.hh"
+#include "ipaddress.hh"
 
 #define BUFFLEN 1024
 

@@ -14,33 +14,30 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "IKEv2Packet.hh"
+
+#pragma once
+
+#include "logging.hh"
+#include "ikev2payload.hh"
 
 namespace IKEv2 {
-Packet::Packet() {
-    TRACE();
-}
+class Packet {
+ public:
+    typedef struct ikev2Header_s {
+        U32 initiatorSpi;
+        U32 responderSpi;
+        U8 nextPayload;
+        U8 version;  // Major + Minor version
+        U16 xchgType;
+        U8 flags;
+        U32 msgId;
+        U32 length;
+    }ikev2Header;
 
-Packet::~Packet() {
-    TRACE();
-}
-
-S32 Packet::create() {
-    TRACE();
-
-    return 0;
-}
-
-S32 Packet::destroy() {
-    TRACE();
-
-    return 0;
-}
-
-S32 Packet::clone() {
-    TRACE();
-
-    return 0;
-}
+    Packet();
+    ~Packet();
+    S32 create();
+    S32 destroy();
+    S32 clone();
+};
 }  // namespace IKEv2
-

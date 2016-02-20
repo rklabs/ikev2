@@ -17,27 +17,10 @@
 
 #pragma once
 
-#include "Logging.hh"
-#include "IKEv2Payload.hh"
+#include "logging.hh"
 
 namespace IKEv2 {
-class Packet {
- public:
-    typedef struct ikev2Header_s {
-        U32 initiatorSpi;
-        U32 responderSpi;
-        U8 nextPayload;
-        U8 version;  // Major + Minor version
-        U16 xchgType;
-        U8 flags;
-        U32 msgId;
-        U32 length;
-    }ikev2Header;
+namespace Sm {
 
-    Packet();
-    ~Packet();
-    S32 create();
-    S32 destroy();
-    S32 clone();
-};
-}  // namespace IKEv2
+}  // namespace sm
+}  // namespace ikev2

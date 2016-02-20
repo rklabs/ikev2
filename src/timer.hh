@@ -31,9 +31,9 @@
 #include <condition_variable>
 #include <memory>
 
-#include "Logging.hh"
-#include "Threadpool.hh"
-#include "BasicTypes.hh"
+#include "logging.hh"
+#include "threadpool.hh"
+#include "basictypes.hh"
 
 #define ENQUEUE_TIMER_TASK(...) \
     Timer::AsyncTimer::getAsyncTimer().createTimerEvent(__VA_ARGS__);

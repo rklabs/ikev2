@@ -32,7 +32,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "Logging.hh"
+#include "logging.hh"
 
 #define MAX_THREADS 50
 

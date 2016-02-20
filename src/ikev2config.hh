@@ -22,11 +22,11 @@
 #include <sys/inotify.h>
 #include <sys/stat.h>   // open
 
-#include "Logging.hh"
-#include "Threadpool.hh"
-#include "Synchro.hh"
-#include "Asyncio.hh"
-#include "Utils.hh"
+#include "logging.hh"
+#include "threadpool.hh"
+#include "synchro.hh"
+#include "asyncio.hh"
+#include "utils.hh"
 
 namespace IKEv2 {
 

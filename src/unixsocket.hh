@@ -17,10 +17,19 @@
 
 #pragma once
 
-#include "Logging.hh"
+#include "basictypes.hh"
 
-namespace IKEv2 {
-namespace Sm {
+namespace Socket {
 
-}  // namespace sm
-}  // namespace ikev2
+class UnixSocket {
+ public:
+    U32 createSocket();
+    U32 send();
+    U32 receive();
+    void teardown();
+    U32 setSocketOptions();
+ private:
+    S32 sockfd_;
+};
+
+} // namespace Socket

@@ -21,7 +21,7 @@
 #include <vector>
 #include <map>
 
-#include "Logging.hh"
+#include "logging.hh"
 
 namespace Crypto {
 

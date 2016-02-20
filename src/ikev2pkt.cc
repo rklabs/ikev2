@@ -14,19 +14,33 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-#include "Threadpool.hh"
+#include "ikev2pkt.hh"
 
 namespace IKEv2 {
-
-// Return global static thread pool(singleton)
-ThreadPool &
-ThreadPool::getThreadPool() {
+Packet::Packet() {
     TRACE();
-    static ThreadPool threadPool(MAX_THREADS);
-    return threadPool;
 }
 
-}  // namespace IKEv2
+Packet::~Packet() {
+    TRACE();
+}
 
+S32 Packet::create() {
+    TRACE();
+
+    return 0;
+}
+
+S32 Packet::destroy() {
+    TRACE();
+
+    return 0;
+}
+
+S32 Packet::clone() {
+    TRACE();
+
+    return 0;
+}
+}  // namespace IKEv2
 

@@ -14,12 +14,19 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "IKEv2Payload.hh"
+
+#include "threadpool.hh"
 
 namespace IKEv2 {
-namespace Payload {
 
-}  // namespace payload
+// Return global static thread pool(singleton)
+ThreadPool &
+ThreadPool::getThreadPool() {
+    TRACE();
+    static ThreadPool threadPool(MAX_THREADS);
+    return threadPool;
+}
+
 }  // namespace IKEv2
 
 
