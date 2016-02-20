@@ -8,7 +8,7 @@ before_install:
   - sudo apt-get update -qq
 
 install:
-  - sudo apt-get install -qq gcc5 g++-5
+  - sudo apt-get install -qq gcc-5 g++-5
   - sudo apt-get install -qq intltool
   - sudo apt-get install -qq liblog4cpp5 liblog4cpp5-dev
   - sudo apt-get install -qq libboost-all-dev
