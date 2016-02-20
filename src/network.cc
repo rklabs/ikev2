@@ -93,7 +93,8 @@ IKEv2SessionManager4::handleSession() {
             auto conn = IKEv2Session4::Ptr(new IKEv2Session4(elem->hash));
             globalIKEv2Session4Map.add(elem->hash, conn);
             globalSendPktQ4.addPkt(elem);
-            ENQUEUE_TIMER_TASK(3000, false, &IKEv2Session4::handleTimeout, c, elem->hash);
+            ENQUEUE_TIMER_TASK(3000, false, &IKEv2Session4::handleTimeout, 
+                               conn, elem->hash);
         }
 
         // Process packet here and send reply
